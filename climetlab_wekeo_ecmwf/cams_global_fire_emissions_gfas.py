@@ -23,8 +23,6 @@ class cams_global_fire_emissions_gfas(Main):
         "variable",
     ]
 
-    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
-    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     @normalize(
         "variable",
         [
@@ -86,16 +84,18 @@ class cams_global_fire_emissions_gfas(Main):
             "netcdf",
         ],
     )
+    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
+    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     def __init__(
         self,
-        start="2003-01-01",
-        end="2023-07-13",
         variable,
         format_,
+        start="2003-01-01",
+        end="2023-07-30",
     ):
         super().__init__(
-            start=start,
-            end=end,
             variable=variable,
             format_=format_,
+            start=start,
+            end=end,
         )

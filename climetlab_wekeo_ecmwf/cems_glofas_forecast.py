@@ -22,7 +22,6 @@ class cems_glofas_forecast(Main):
     string_selects = [
         "system_version",
         "system_version",
-        "system_version",
         "hydrological_model",
         "product_type",
         "variable",
@@ -32,7 +31,6 @@ class cems_glofas_forecast(Main):
         "leadtime_hour",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "system_version",
         [
@@ -44,12 +42,6 @@ class cems_glofas_forecast(Main):
         "system_version",
         [
             "version_2_1",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "system_version",
-        [
             "version_3_1",
         ],
         multiple=True,
@@ -186,10 +178,9 @@ class cems_glofas_forecast(Main):
             "netcdf4.zip",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
-        system_version,
         system_version,
         system_version,
         hydrological_model,
@@ -200,10 +191,9 @@ class cems_glofas_forecast(Main):
         day,
         leadtime_hour,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
-            system_version=system_version,
             system_version=system_version,
             system_version=system_version,
             hydrological_model=hydrological_model,
@@ -214,4 +204,5 @@ class cems_glofas_forecast(Main):
             day=day,
             leadtime_hour=leadtime_hour,
             format_=format_,
+            area=area,
         )

@@ -28,7 +28,6 @@ class sis_agrometeorological_indicators(Main):
         "time",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "statistic",
         [
@@ -183,9 +182,9 @@ class sis_agrometeorological_indicators(Main):
             "zip",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         statistic,
         year,
         month,
@@ -193,9 +192,9 @@ class sis_agrometeorological_indicators(Main):
         time,
         variable,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             statistic=statistic,
             year=year,
             month=month,
@@ -203,4 +202,5 @@ class sis_agrometeorological_indicators(Main):
             time=time,
             variable=variable,
             format_=format_,
+            area=area,
         )

@@ -31,7 +31,6 @@ class cems_glofas_reforecast(Main):
         "leadtime_hour",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "system_version",
         [
@@ -209,9 +208,9 @@ class cems_glofas_reforecast(Main):
             "netcdf4.zip",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         system_version,
         system_version,
         hydrological_model,
@@ -222,9 +221,9 @@ class cems_glofas_reforecast(Main):
         hday,
         leadtime_hour,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             system_version=system_version,
             system_version=system_version,
             hydrological_model=hydrological_model,
@@ -235,4 +234,5 @@ class cems_glofas_reforecast(Main):
             hday=hday,
             leadtime_hour=leadtime_hour,
             format_=format_,
+            area=area,
         )

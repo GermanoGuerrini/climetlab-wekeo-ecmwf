@@ -30,7 +30,6 @@ class seasonal_postprocessed_single_levels(Main):
         "leadtime_month",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "variable",
         [
@@ -172,9 +171,9 @@ class seasonal_postprocessed_single_levels(Main):
             "netcdf",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         variable,
         product_type,
         product_type,
@@ -184,9 +183,9 @@ class seasonal_postprocessed_single_levels(Main):
         originating_centre,
         system,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             variable=variable,
             product_type=product_type,
             product_type=product_type,
@@ -196,4 +195,5 @@ class seasonal_postprocessed_single_levels(Main):
             originating_centre=originating_centre,
             system=system,
             format_=format_,
+            area=area,
         )

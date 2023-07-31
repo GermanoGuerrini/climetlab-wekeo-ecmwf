@@ -30,7 +30,6 @@ class cams_global_reanalysis_eac4_monthly(Main):
         "time",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "variable",
         [
@@ -125,44 +124,6 @@ class cams_global_reanalysis_eac4_monthly(Main):
         multiple=True,
     )
     @normalize(
-        "pressure_level",
-        [
-            "1",
-            "10",
-            "100",
-            "1000",
-            "150",
-            "2",
-            "20",
-            "200",
-            "250",
-            "3",
-            "30",
-            "300",
-            "400",
-            "5",
-            "50",
-            "500",
-            "600",
-            "7",
-            "70",
-            "700",
-            "800",
-            "850",
-            "900",
-            "925",
-            "950",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "model_level",
-        [
-            "60",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "year",
         [
             "2003",
@@ -235,28 +196,67 @@ class cams_global_reanalysis_eac4_monthly(Main):
             "netcdf",
         ],
     )
+    @normalize("area", "bounding-box(list)")
+    @normalize(
+        "pressure_level",
+        [
+            "1",
+            "10",
+            "100",
+            "1000",
+            "150",
+            "2",
+            "20",
+            "200",
+            "250",
+            "3",
+            "30",
+            "300",
+            "400",
+            "5",
+            "50",
+            "500",
+            "600",
+            "7",
+            "70",
+            "700",
+            "800",
+            "850",
+            "900",
+            "925",
+            "950",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "model_level",
+        [
+            "60",
+        ],
+        multiple=True,
+    )
     def __init__(
         self,
-        area=None,
         variable,
         variable,
-        pressure_level=None,
-        model_level=None,
         year,
         month,
         product_type,
         time,
         format_,
+        area=None,
+        pressure_level=None,
+        model_level=None,
     ):
         super().__init__(
-            area=area,
             variable=variable,
             variable=variable,
-            pressure_level=pressure_level,
-            model_level=model_level,
             year=year,
             month=month,
             product_type=product_type,
             time=time,
             format_=format_,
+            area=area,
+            pressure_level=pressure_level,
+            model_level=model_level,
         )

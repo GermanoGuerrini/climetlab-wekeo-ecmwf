@@ -31,9 +31,6 @@ class cams_global_ghg_reanalysis_egg4(Main):
         "step",
     ]
 
-    @normalize("area", "bounding-box(list)")
-    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
-    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     @normalize(
         "variable",
         [
@@ -153,6 +150,30 @@ class cams_global_ghg_reanalysis_egg4(Main):
         multiple=True,
     )
     @normalize(
+        "step",
+        [
+            "0",
+            "12",
+            "15",
+            "18",
+            "21",
+            "3",
+            "6",
+            "9",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "format_",
+        [
+            "grib",
+            "netcdf",
+        ],
+    )
+    @normalize("area", "bounding-box(list)")
+    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
+    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
+    @normalize(
         "pressure_level",
         [
             "1",
@@ -249,55 +270,34 @@ class cams_global_ghg_reanalysis_egg4(Main):
         ],
         multiple=True,
     )
-    @normalize(
-        "step",
-        [
-            "0",
-            "12",
-            "15",
-            "18",
-            "21",
-            "3",
-            "6",
-            "9",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "format_",
-        [
-            "grib",
-            "netcdf",
-        ],
-    )
     def __init__(
         self,
+        variable,
+        variable,
+        variable,
+        variable,
+        variable,
+        variable,
+        step,
+        format_,
         area=None,
         start="2003-01-01",
         end="2020-12-31",
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
         pressure_level=None,
         model_level=None,
-        step,
-        format_,
     ):
         super().__init__(
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            step=step,
+            format_=format_,
             area=area,
             start=start,
             end=end,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
             pressure_level=pressure_level,
             model_level=model_level,
-            step=step,
-            format_=format_,
         )

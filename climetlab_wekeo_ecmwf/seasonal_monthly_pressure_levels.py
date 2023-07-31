@@ -31,7 +31,6 @@ class seasonal_monthly_pressure_levels(Main):
         "leadtime_month",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "variable",
         [
@@ -198,9 +197,9 @@ class seasonal_monthly_pressure_levels(Main):
             "netcdf",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         variable,
         pressure_level,
         product_type,
@@ -211,9 +210,9 @@ class seasonal_monthly_pressure_levels(Main):
         originating_centre,
         system,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             variable=variable,
             pressure_level=pressure_level,
             product_type=product_type,
@@ -224,4 +223,5 @@ class seasonal_monthly_pressure_levels(Main):
             originating_centre=originating_centre,
             system=system,
             format_=format_,
+            area=area,
         )

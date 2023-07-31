@@ -27,7 +27,6 @@ class satellite_earth_radiation_budget(Main):
         "month",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "variable",
         [
@@ -135,22 +134,23 @@ class satellite_earth_radiation_budget(Main):
             "zip",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         variable,
         sensor,
         year,
         month,
         origin,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             variable=variable,
             sensor=sensor,
             year=year,
             month=month,
             origin=origin,
             format_=format_,
+            area=area,
         )

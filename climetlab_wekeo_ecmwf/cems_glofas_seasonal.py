@@ -30,7 +30,6 @@ class cems_glofas_seasonal(Main):
         "leadtime_hour",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "system_version",
         [
@@ -323,9 +322,9 @@ class cems_glofas_seasonal(Main):
             "netcdf4.zip",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         system_version,
         system_version,
         system_version,
@@ -335,9 +334,9 @@ class cems_glofas_seasonal(Main):
         month,
         leadtime_hour,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             system_version=system_version,
             system_version=system_version,
             system_version=system_version,
@@ -347,4 +346,5 @@ class cems_glofas_seasonal(Main):
             month=month,
             leadtime_hour=leadtime_hour,
             format_=format_,
+            area=area,
         )

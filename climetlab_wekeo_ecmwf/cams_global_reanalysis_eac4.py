@@ -32,9 +32,6 @@ class cams_global_reanalysis_eac4(Main):
         "time",
     ]
 
-    @normalize("area", "bounding-box(list)")
-    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
-    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     @normalize(
         "variable",
         [
@@ -233,6 +230,30 @@ class cams_global_reanalysis_eac4(Main):
         multiple=True,
     )
     @normalize(
+        "time",
+        [
+            "00:00",
+            "03:00",
+            "06:00",
+            "09:00",
+            "12:00",
+            "15:00",
+            "18:00",
+            "21:00",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "format_",
+        [
+            "grib",
+            "netcdf",
+        ],
+    )
+    @normalize("area", "bounding-box(list)")
+    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
+    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
+    @normalize(
         "pressure_level",
         [
             "1",
@@ -329,57 +350,36 @@ class cams_global_reanalysis_eac4(Main):
         ],
         multiple=True,
     )
-    @normalize(
-        "time",
-        [
-            "00:00",
-            "03:00",
-            "06:00",
-            "09:00",
-            "12:00",
-            "15:00",
-            "18:00",
-            "21:00",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "format_",
-        [
-            "grib",
-            "netcdf",
-        ],
-    )
     def __init__(
         self,
+        variable,
+        variable,
+        variable,
+        variable,
+        variable,
+        variable,
+        variable,
+        time,
+        format_,
         area=None,
         start="2003-01-01",
         end="2022-12-31",
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
         pressure_level=None,
         model_level=None,
-        time,
-        format_,
     ):
         super().__init__(
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            variable=variable,
+            time=time,
+            format_=format_,
             area=area,
             start=start,
             end=end,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
             pressure_level=pressure_level,
             model_level=model_level,
-            time=time,
-            format_=format_,
         )

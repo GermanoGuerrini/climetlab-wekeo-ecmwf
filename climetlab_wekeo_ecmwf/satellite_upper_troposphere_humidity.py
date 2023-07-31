@@ -27,7 +27,6 @@ class satellite_upper_troposphere_humidity(Main):
         "day",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "year",
         [
@@ -138,22 +137,23 @@ class satellite_upper_troposphere_humidity(Main):
             "zip",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         year,
         month,
         day,
         sensor_on_satellite,
         variable="all",
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             year=year,
             month=month,
             day=day,
             sensor_on_satellite=sensor_on_satellite,
             variable=variable,
             format_=format_,
+            area=area,
         )

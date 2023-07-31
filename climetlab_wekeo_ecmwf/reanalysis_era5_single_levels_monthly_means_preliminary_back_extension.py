@@ -41,7 +41,6 @@ class reanalysis_era5_single_levels_monthly_means_preliminary_back_extension(Mai
         "time",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "product_type",
         [
@@ -509,9 +508,9 @@ class reanalysis_era5_single_levels_monthly_means_preliminary_back_extension(Mai
             "netcdf",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         product_type,
         variable,
         variable,
@@ -532,9 +531,9 @@ class reanalysis_era5_single_levels_monthly_means_preliminary_back_extension(Mai
         month,
         time,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             product_type=product_type,
             variable=variable,
             variable=variable,
@@ -555,4 +554,5 @@ class reanalysis_era5_single_levels_monthly_means_preliminary_back_extension(Mai
             month=month,
             time=time,
             format_=format_,
+            area=area,
         )

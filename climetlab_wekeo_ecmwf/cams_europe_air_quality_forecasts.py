@@ -28,9 +28,6 @@ class cams_europe_air_quality_forecasts(Main):
         "leadtime_hour",
     ]
 
-    @normalize("area", "bounding-box(list)")
-    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
-    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     @normalize(
         "variable",
         [
@@ -242,11 +239,11 @@ class cams_europe_air_quality_forecasts(Main):
             "netcdf",
         ],
     )
+    @normalize("area", "bounding-box(list)")
+    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
+    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     def __init__(
         self,
-        area=None,
-        start="2020-07-10",
-        end="2023-07-14",
         variable,
         model,
         level,
@@ -254,11 +251,11 @@ class cams_europe_air_quality_forecasts(Main):
         time,
         leadtime_hour,
         format_,
+        area=None,
+        start="2020-07-27",
+        end="2023-07-31",
     ):
         super().__init__(
-            area=area,
-            start=start,
-            end=end,
             variable=variable,
             model=model,
             level=level,
@@ -266,4 +263,7 @@ class cams_europe_air_quality_forecasts(Main):
             time=time,
             leadtime_hour=leadtime_hour,
             format_=format_,
+            area=area,
+            start=start,
+            end=end,
         )

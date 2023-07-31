@@ -28,7 +28,6 @@ class reanalysis_era5_pressure_levels_monthly_means_preliminary_back_extension(M
         "time",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "product_type",
         [
@@ -194,9 +193,9 @@ class reanalysis_era5_pressure_levels_monthly_means_preliminary_back_extension(M
             "netcdf",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         product_type,
         variable,
         pressure_level,
@@ -204,9 +203,9 @@ class reanalysis_era5_pressure_levels_monthly_means_preliminary_back_extension(M
         month,
         time,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             product_type=product_type,
             variable=variable,
             pressure_level=pressure_level,
@@ -214,4 +213,5 @@ class reanalysis_era5_pressure_levels_monthly_means_preliminary_back_extension(M
             month=month,
             time=time,
             format_=format_,
+            area=area,
         )

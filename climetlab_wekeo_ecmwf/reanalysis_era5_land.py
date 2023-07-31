@@ -34,7 +34,6 @@ class reanalysis_era5_land(Main):
         "time",
     ]
 
-    @normalize("area", "bounding-box(list)")
     @normalize(
         "variable",
         [
@@ -304,9 +303,9 @@ class reanalysis_era5_land(Main):
             "netcdf.zip",
         ],
     )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        area=None,
         variable,
         variable,
         variable,
@@ -320,9 +319,9 @@ class reanalysis_era5_land(Main):
         year,
         month,
         format_,
+        area=None,
     ):
         super().__init__(
-            area=area,
             variable=variable,
             variable=variable,
             variable=variable,
@@ -336,4 +335,5 @@ class reanalysis_era5_land(Main):
             year=year,
             month=month,
             format_=format_,
+            area=area,
         )
