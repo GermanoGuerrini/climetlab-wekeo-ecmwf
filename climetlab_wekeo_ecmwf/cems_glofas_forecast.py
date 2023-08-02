@@ -21,83 +21,15 @@ class cems_glofas_forecast(Main):
 
     string_selects = [
         "system_version",
-        "system_version",
-        "hydrological_model",
         "product_type",
-        "variable",
-        "year",
         "month",
-        "day",
         "leadtime_hour",
+        "variable",
+        "day",
+        "year",
+        "hydrological_model",
     ]
 
-    @normalize(
-        "system_version",
-        [
-            "operational",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "system_version",
-        [
-            "version_2_1",
-            "version_3_1",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "hydrological_model",
-        [
-            "htessel_lisflood",
-            "lisflood",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "product_type",
-        [
-            "control_forecast",
-            "ensemble_perturbed_forecasts",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "river_discharge_in_the_last_24_hours",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "year",
-        [
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
     @normalize(
         "day",
         [
@@ -132,6 +64,14 @@ class cems_glofas_forecast(Main):
             "29",
             "30",
             "31",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "hydrological_model",
+        [
+            "htessel_lisflood",
+            "lisflood",
         ],
         multiple=True,
     )
@@ -172,6 +112,59 @@ class cems_glofas_forecast(Main):
         multiple=True,
     )
     @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "product_type",
+        [
+            "control_forecast",
+            "ensemble_perturbed_forecasts",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "system_version",
+        [
+            "operational",
+            "version_2_1",
+            "version_3_1",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "river_discharge_in_the_last_24_hours",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "format_",
         [
             "grib",
@@ -181,28 +174,26 @@ class cems_glofas_forecast(Main):
     @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        system_version,
-        system_version,
+        day,
         hydrological_model,
+        leadtime_hour,
+        month,
         product_type,
+        system_version,
         variable,
         year,
-        month,
-        day,
-        leadtime_hour,
         format_,
         area=None,
     ):
         super().__init__(
-            system_version=system_version,
-            system_version=system_version,
+            day=day,
             hydrological_model=hydrological_model,
+            leadtime_hour=leadtime_hour,
+            month=month,
             product_type=product_type,
+            system_version=system_version,
             variable=variable,
             year=year,
-            month=month,
-            day=day,
-            leadtime_hour=leadtime_hour,
             format_=format_,
             area=area,
         )

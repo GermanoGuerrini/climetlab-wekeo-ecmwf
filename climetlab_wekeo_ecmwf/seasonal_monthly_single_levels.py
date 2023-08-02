@@ -22,14 +22,55 @@ class seasonal_monthly_single_levels(Main):
     ]
 
     string_selects = [
-        "variable",
         "product_type",
-        "product_type",
-        "year",
         "month",
+        "variable",
         "leadtime_month",
+        "year",
     ]
 
+    @normalize(
+        "leadtime_month",
+        [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "product_type",
+        [
+            "ensemble_mean",
+            "hindcast_climate_mean",
+            "monthly_maximum",
+            "monthly_mean",
+            "monthly_minimum",
+            "monthly_standard_deviation",
+        ],
+        multiple=True,
+    )
     @normalize(
         "variable",
         [
@@ -68,24 +109,6 @@ class seasonal_monthly_single_levels(Main):
             "total_column_cloud_liquid_water",
             "total_column_water_vapour",
             "total_precipitation",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "product_type",
-        [
-            "ensemble_mean",
-            "hindcast_climate_mean",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "product_type",
-        [
-            "monthly_maximum",
-            "monthly_mean",
-            "monthly_minimum",
-            "monthly_standard_deviation",
         ],
         multiple=True,
     )
@@ -139,36 +162,6 @@ class seasonal_monthly_single_levels(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "leadtime_month",
-        [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "originating_centre",
         [
             "cmcc",
@@ -214,24 +207,22 @@ class seasonal_monthly_single_levels(Main):
     @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        variable,
-        product_type,
-        product_type,
-        year,
-        month,
         leadtime_month,
+        month,
+        product_type,
+        variable,
+        year,
         originating_centre,
         system,
         format_,
         area=None,
     ):
         super().__init__(
-            variable=variable,
-            product_type=product_type,
-            product_type=product_type,
-            year=year,
-            month=month,
             leadtime_month=leadtime_month,
+            month=month,
+            product_type=product_type,
+            variable=variable,
+            year=year,
             originating_centre=originating_centre,
             system=system,
             format_=format_,

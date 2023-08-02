@@ -22,54 +22,12 @@ class satellite_precipitation_microwave(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
-        "day",
+        "year",
         "version",
+        "day",
     ]
 
-    @normalize(
-        "year",
-        [
-            "2000",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
     @normalize(
         "day",
         [
@@ -108,9 +66,51 @@ class satellite_precipitation_microwave(Main):
         multiple=True,
     )
     @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "version",
         [
             "v1.0",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
         ],
         multiple=True,
     )
@@ -136,19 +136,19 @@ class satellite_precipitation_microwave(Main):
     )
     def __init__(
         self,
-        year,
-        month,
         day,
+        month,
         version,
+        year,
         time_aggregation,
         variable="all",
         format_,
     ):
         super().__init__(
-            year=year,
-            month=month,
             day=day,
+            month=month,
             version=version,
+            year=year,
             time_aggregation=time_aggregation,
             variable=variable,
             format_=format_,

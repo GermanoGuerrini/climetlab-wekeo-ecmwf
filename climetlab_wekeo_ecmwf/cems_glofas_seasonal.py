@@ -21,76 +21,18 @@ class cems_glofas_seasonal(Main):
 
     string_selects = [
         "system_version",
-        "system_version",
-        "system_version",
-        "hydrological_model",
+        "leadtime_hour",
+        "month",
         "variable",
         "year",
-        "month",
-        "leadtime_hour",
+        "hydrological_model",
     ]
 
-    @normalize(
-        "system_version",
-        [
-            "operational",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "system_version",
-        [
-            "version_2_2",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "system_version",
-        [
-            "version_3_1",
-        ],
-        multiple=True,
-    )
     @normalize(
         "hydrological_model",
         [
             "htessel_lisflood",
             "lisflood",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "river_discharge_in_the_last_24_hours",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "year",
-        [
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
         ],
         multiple=True,
     )
@@ -316,6 +258,50 @@ class cems_glofas_seasonal(Main):
         multiple=True,
     )
     @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "system_version",
+        [
+            "operational",
+            "version_2_2",
+            "version_3_1",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "river_discharge_in_the_last_24_hours",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "format_",
         [
             "grib",
@@ -325,26 +311,22 @@ class cems_glofas_seasonal(Main):
     @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        system_version,
-        system_version,
-        system_version,
         hydrological_model,
+        leadtime_hour,
+        month,
+        system_version,
         variable,
         year,
-        month,
-        leadtime_hour,
         format_,
         area=None,
     ):
         super().__init__(
-            system_version=system_version,
-            system_version=system_version,
-            system_version=system_version,
             hydrological_model=hydrological_model,
+            leadtime_hour=leadtime_hour,
+            month=month,
+            system_version=system_version,
             variable=variable,
             year=year,
-            month=month,
-            leadtime_hour=leadtime_hour,
             format_=format_,
             area=area,
         )

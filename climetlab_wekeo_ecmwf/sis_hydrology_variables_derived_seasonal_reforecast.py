@@ -20,27 +20,37 @@ class sis_hydrology_variables_derived_seasonal_reforecast(Main):
     ]
 
     string_selects = [
-        "variable",
-        "variable",
-        "variable",
-        "hydrological_model",
-        "year",
         "month",
+        "variable",
         "version",
+        "year",
+        "hydrological_model",
     ]
 
     @normalize(
-        "variable",
+        "hydrological_model",
         [
-            "river_discharge",
+            "e_hypecatch_m00",
+            "lisflood_efas",
+            "vic_wur",
         ],
         multiple=True,
     )
     @normalize(
-        "variable",
+        "month",
         [
-            "reference_river_discharge_lower_tercile",
-            "reference_river_discharge_upper_tercile",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
         ],
         multiple=True,
     )
@@ -51,15 +61,16 @@ class sis_hydrology_variables_derived_seasonal_reforecast(Main):
             "brier_skill_score_below_normal_conditions",
             "continuous_ranked_probability_skill_score",
             "fair_ranked_probability_skill_score",
+            "reference_river_discharge_lower_tercile",
+            "reference_river_discharge_upper_tercile",
+            "river_discharge",
         ],
         multiple=True,
     )
     @normalize(
-        "hydrological_model",
+        "version",
         [
-            "e_hypecatch_m00",
-            "lisflood_efas",
-            "vic_wur",
+            "1",
         ],
         multiple=True,
     )
@@ -100,31 +111,6 @@ class sis_hydrology_variables_derived_seasonal_reforecast(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "version",
-        [
-            "1",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "format_",
         [
             "tgz",
@@ -133,22 +119,18 @@ class sis_hydrology_variables_derived_seasonal_reforecast(Main):
     )
     def __init__(
         self,
-        variable,
-        variable,
-        variable,
         hydrological_model,
-        year,
         month,
+        variable,
         version,
+        year,
         format_,
     ):
         super().__init__(
-            variable=variable,
-            variable=variable,
-            variable=variable,
             hydrological_model=hydrological_model,
-            year=year,
             month=month,
+            variable=variable,
             version=version,
+            year=year,
             format_=format_,
         )

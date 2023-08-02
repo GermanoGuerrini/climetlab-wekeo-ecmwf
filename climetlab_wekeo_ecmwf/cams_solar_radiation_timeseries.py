@@ -70,7 +70,7 @@ class cams_solar_radiation_timeseries(Main):
         time_reference,
         format_,
         start="2004-01-01",
-        end="2023-07-29",
+        end="2023-07-31",
         latitude=None,
         longitude=None,
         altitude=None,

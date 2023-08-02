@@ -23,12 +23,38 @@ class sis_marine_properties(Main):
     ]
 
     string_selects = [
+        "month",
+        "year",
         "variable",
         "experiment",
-        "year",
-        "month",
     ]
 
+    @normalize(
+        "experiment",
+        [
+            "rcp4_5",
+            "rcp8_5",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
     @normalize(
         "variable",
         [
@@ -52,14 +78,6 @@ class sis_marine_properties(Main):
             "u_component_of_water_velocity",
             "v_component_of_water_velocity",
             "zooplankton_carbon",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "experiment",
-        [
-            "rcp4_5",
-            "rcp8_5",
         ],
         multiple=True,
     )
@@ -164,24 +182,6 @@ class sis_marine_properties(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "origin",
         [
             "nemo_ersem",
@@ -211,20 +211,20 @@ class sis_marine_properties(Main):
     )
     def __init__(
         self,
-        variable,
         experiment,
-        year,
         month,
+        variable,
+        year,
         origin,
         vertical_resolution,
         time_aggregation,
         format_,
     ):
         super().__init__(
-            variable=variable,
             experiment=experiment,
-            year=year,
             month=month,
+            variable=variable,
+            year=year,
             origin=origin,
             vertical_resolution=vertical_resolution,
             time_aggregation=time_aggregation,

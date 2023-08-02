@@ -22,23 +22,41 @@ class seasonal_postprocessed_pressure_levels(Main):
     ]
 
     string_selects = [
+        "product_type",
+        "month",
         "variable",
         "pressure_level",
-        "product_type",
-        "product_type",
-        "year",
-        "month",
         "leadtime_month",
+        "year",
     ]
 
     @normalize(
-        "variable",
+        "leadtime_month",
         [
-            "geopotential_anomaly",
-            "specific_humidity_anomaly",
-            "temperature_anomaly",
-            "u_component_of_wind_anomaly",
-            "v_component_of_wind_anomaly",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
         ],
         multiple=True,
     )
@@ -64,13 +82,18 @@ class seasonal_postprocessed_pressure_levels(Main):
         "product_type",
         [
             "ensemble_mean",
+            "monthly_mean",
         ],
         multiple=True,
     )
     @normalize(
-        "product_type",
+        "variable",
         [
-            "monthly_mean",
+            "geopotential_anomaly",
+            "specific_humidity_anomaly",
+            "temperature_anomaly",
+            "u_component_of_wind_anomaly",
+            "v_component_of_wind_anomaly",
         ],
         multiple=True,
     )
@@ -84,36 +107,6 @@ class seasonal_postprocessed_pressure_levels(Main):
             "2021",
             "2022",
             "2023",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "leadtime_month",
-        [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
         ],
         multiple=True,
     )
@@ -163,26 +156,24 @@ class seasonal_postprocessed_pressure_levels(Main):
     @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        variable,
+        leadtime_month,
+        month,
         pressure_level,
         product_type,
-        product_type,
+        variable,
         year,
-        month,
-        leadtime_month,
         originating_centre,
         system,
         format_,
         area=None,
     ):
         super().__init__(
-            variable=variable,
+            leadtime_month=leadtime_month,
+            month=month,
             pressure_level=pressure_level,
             product_type=product_type,
-            product_type=product_type,
+            variable=variable,
             year=year,
-            month=month,
-            leadtime_month=leadtime_month,
             originating_centre=originating_centre,
             system=system,
             format_=format_,

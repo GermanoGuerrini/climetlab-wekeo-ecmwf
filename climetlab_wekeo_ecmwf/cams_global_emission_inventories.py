@@ -20,12 +20,25 @@ class cams_global_emission_inventories(Main):
     ]
 
     string_selects = [
-        "variable",
-        "source",
         "version",
+        "source",
         "year",
+        "variable",
     ]
 
+    @normalize(
+        "source",
+        [
+            "anthropogenic",
+            "aviation",
+            "biogenic",
+            "oceanic",
+            "shipping",
+            "soil",
+            "termites",
+        ],
+        multiple=True,
+    )
     @normalize(
         "variable",
         [
@@ -95,19 +108,6 @@ class cams_global_emission_inventories(Main):
         multiple=True,
     )
     @normalize(
-        "source",
-        [
-            "anthropogenic",
-            "aviation",
-            "biogenic",
-            "oceanic",
-            "shipping",
-            "soil",
-            "termites",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "version",
         [
             "latest",
@@ -157,15 +157,15 @@ class cams_global_emission_inventories(Main):
     )
     def __init__(
         self,
-        variable,
         source,
+        variable,
         version,
         year,
         format_,
     ):
         super().__init__(
-            variable=variable,
             source=source,
+            variable=variable,
             version=version,
             year=year,
             format_=format_,

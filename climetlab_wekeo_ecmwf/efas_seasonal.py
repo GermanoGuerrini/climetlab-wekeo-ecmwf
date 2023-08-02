@@ -22,49 +22,12 @@ class efas_seasonal(Main):
     ]
 
     string_selects = [
-        "soil_level",
-        "year",
-        "month",
         "leadtime_hour",
+        "month",
+        "year",
+        "soil_level",
     ]
 
-    @normalize(
-        "soil_level",
-        [
-            "1",
-            "2",
-            "3",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "year",
-        [
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
     @normalize(
         "leadtime_hour",
         [
@@ -288,6 +251,43 @@ class efas_seasonal(Main):
         multiple=True,
     )
     @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "soil_level",
+        [
+            "1",
+            "2",
+            "3",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "variable",
         [
             "elevation",
@@ -316,19 +316,19 @@ class efas_seasonal(Main):
     )
     def __init__(
         self,
+        leadtime_hour,
+        month,
         soil_level,
         year,
-        month,
-        leadtime_hour,
         variable,
         model_levels,
         format_,
     ):
         super().__init__(
+            leadtime_hour=leadtime_hour,
+            month=month,
             soil_level=soil_level,
             year=year,
-            month=month,
-            leadtime_hour=leadtime_hour,
             variable=variable,
             model_levels=model_levels,
             format_=format_,

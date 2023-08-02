@@ -21,16 +21,77 @@ class cems_fire_historical(Main):
 
     string_selects = [
         "product_type",
-        "variable",
-        "variable",
+        "month",
+        "dataset",
         "variable",
         "version",
-        "dataset",
-        "year",
-        "month",
         "day",
+        "year",
     ]
 
+    @normalize(
+        "dataset",
+        [
+            "Consolidated dataset",
+            "Intermediate dataset",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "day",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
     @normalize(
         "product_type",
         [
@@ -45,30 +106,18 @@ class cems_fire_historical(Main):
         "variable",
         [
             "build_up_index",
+            "burning_index",
             "danger_risk",
             "drought_code",
             "duff_moisture_code",
+            "energy_release_component",
             "fine_fuel_moisture_code",
             "fire_daily_severity_rating",
-            "fire_weather_index",
-            "initial_fire_spread_index",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
             "fire_danger_index",
-            "keetch_byram_drought_index",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "burning_index",
-            "energy_release_component",
+            "fire_weather_index",
             "ignition_component",
+            "initial_fire_spread_index",
+            "keetch_byram_drought_index",
             "spread_component",
         ],
         multiple=True,
@@ -79,14 +128,6 @@ class cems_fire_historical(Main):
             "3.0",
             "3.1",
             "4.0",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "dataset",
-        [
-            "Consolidated dataset",
-            "Intermediate dataset",
         ],
         multiple=True,
     )
@@ -141,61 +182,6 @@ class cems_fire_historical(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "day",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "format_",
         [
             "tgz",
@@ -204,26 +190,22 @@ class cems_fire_historical(Main):
     )
     def __init__(
         self,
+        dataset,
+        day,
+        month,
         product_type,
         variable,
-        variable,
-        variable,
         version,
-        dataset,
         year,
-        month,
-        day,
         format_,
     ):
         super().__init__(
+            dataset=dataset,
+            day=day,
+            month=month,
             product_type=product_type,
             variable=variable,
-            variable=variable,
-            variable=variable,
             version=version,
-            dataset=dataset,
             year=year,
-            month=month,
-            day=day,
             format_=format_,
         )

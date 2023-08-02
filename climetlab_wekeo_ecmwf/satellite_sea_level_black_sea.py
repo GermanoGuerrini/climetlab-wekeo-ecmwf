@@ -21,63 +21,11 @@ class satellite_sea_level_black_sea(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
+        "year",
         "day",
     ]
 
-    @normalize(
-        "year",
-        [
-            "1993",
-            "1994",
-            "1995",
-            "1996",
-            "1997",
-            "1998",
-            "1999",
-            "2000",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
     @normalize(
         "day",
         [
@@ -116,6 +64,58 @@ class satellite_sea_level_black_sea(Main):
         multiple=True,
     )
     @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "1993",
+            "1994",
+            "1995",
+            "1996",
+            "1997",
+            "1998",
+            "1999",
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "variable",
         [
             "all",
@@ -130,16 +130,16 @@ class satellite_sea_level_black_sea(Main):
     )
     def __init__(
         self,
-        year,
-        month,
         day,
+        month,
+        year,
         variable="all",
         format_,
     ):
         super().__init__(
-            year=year,
-            month=month,
             day=day,
+            month=month,
+            year=year,
             variable=variable,
             format_=format_,
         )

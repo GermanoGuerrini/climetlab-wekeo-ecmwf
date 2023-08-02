@@ -20,118 +20,16 @@ class sis_biodiversity_cmip5_regional(Main):
     ]
 
     string_selects = [
-        "region",
-        "variable",
-        "variable",
-        "variable",
-        "variable",
-        "variable",
-        "variable",
-        "variable",
-        "variable",
         "derived_variable",
-        "model",
-        "ensemble_member",
-        "experiment",
         "statistic",
+        "variable",
         "version",
+        "ensemble_member",
+        "region",
+        "model",
+        "experiment",
     ]
 
-    @normalize(
-        "region",
-        [
-            "central_africa",
-            "europe",
-            "northern_brazil",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "annual_mean_temperature",
-            "annual_precipitation",
-            "isothermality",
-            "maximum_temperature_of_warmest_month",
-            "mean_diurnal_range",
-            "mean_temperature_of_coldest_quarter",
-            "mean_temperature_of_driest_quarter",
-            "mean_temperature_of_warmest_quarter",
-            "mean_temperature_of_wettest_quarter",
-            "minimum_temperature_of_coldest_month",
-            "precipitation_of_coldest_quarter",
-            "precipitation_of_driest_month",
-            "precipitation_of_driest_quarter",
-            "precipitation_of_warmest_quarter",
-            "precipitation_of_wettest_month",
-            "precipitation_of_wettest_quarter",
-            "precipitation_seasonality",
-            "temperature_annual_range",
-            "temperature_seasonality",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "aridity",
-            "dry_days",
-            "dry_spells",
-            "summer_days",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "evaporative_fraction",
-            "surface_latent_heat_flux",
-            "surface_sensible_heat_flux",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "frost_days",
-            "growing_degree_days",
-            "growing_degree_days_during_growing_season_length",
-            "growing_season",
-            "koeppen_geiger_class",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "potential_evaporation",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "2m_temperature",
-            "cloud_cover",
-            "precipitation",
-            "water_vapor_pressure",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "volumetric_soil_water",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "wind_speed",
-        ],
-        multiple=True,
-    )
     @normalize(
         "derived_variable",
         [
@@ -161,22 +59,6 @@ class sis_biodiversity_cmip5_regional(Main):
         multiple=True,
     )
     @normalize(
-        "model",
-        [
-            "access1_0",
-            "bcc_csm1_1_m",
-            "csiro_mk3_6_0",
-            "gfdl_esm2m",
-            "hadgem2_cc",
-            "hadgem2_es",
-            "ipsl_cm5a_lr",
-            "ipsl_cm5a_mr",
-            "ipsl_cm5b_lr",
-            "noresm1_m",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "ensemble_member",
         [
             "r1i1p1",
@@ -193,12 +75,81 @@ class sis_biodiversity_cmip5_regional(Main):
         multiple=True,
     )
     @normalize(
+        "model",
+        [
+            "access1_0",
+            "bcc_csm1_1_m",
+            "csiro_mk3_6_0",
+            "gfdl_esm2m",
+            "hadgem2_cc",
+            "hadgem2_es",
+            "ipsl_cm5a_lr",
+            "ipsl_cm5a_mr",
+            "ipsl_cm5b_lr",
+            "noresm1_m",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "region",
+        [
+            "central_africa",
+            "europe",
+            "northern_brazil",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "statistic",
         [
             "25th_quartile",
             "75th_quartile",
             "mean",
             "median",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "2m_temperature",
+            "annual_mean_temperature",
+            "annual_precipitation",
+            "aridity",
+            "cloud_cover",
+            "dry_days",
+            "dry_spells",
+            "evaporative_fraction",
+            "frost_days",
+            "growing_degree_days",
+            "growing_degree_days_during_growing_season_length",
+            "growing_season",
+            "isothermality",
+            "koeppen_geiger_class",
+            "maximum_temperature_of_warmest_month",
+            "mean_diurnal_range",
+            "mean_temperature_of_coldest_quarter",
+            "mean_temperature_of_driest_quarter",
+            "mean_temperature_of_warmest_quarter",
+            "mean_temperature_of_wettest_quarter",
+            "minimum_temperature_of_coldest_month",
+            "potential_evaporation",
+            "precipitation",
+            "precipitation_of_coldest_quarter",
+            "precipitation_of_driest_month",
+            "precipitation_of_driest_quarter",
+            "precipitation_of_warmest_quarter",
+            "precipitation_of_wettest_month",
+            "precipitation_of_wettest_quarter",
+            "precipitation_seasonality",
+            "summer_days",
+            "surface_latent_heat_flux",
+            "surface_sensible_heat_flux",
+            "temperature_annual_range",
+            "temperature_seasonality",
+            "volumetric_soil_water",
+            "water_vapor_pressure",
+            "wind_speed",
         ],
         multiple=True,
     )
@@ -218,38 +169,24 @@ class sis_biodiversity_cmip5_regional(Main):
     )
     def __init__(
         self,
-        region,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
         derived_variable,
-        model,
         ensemble_member,
         experiment,
+        model,
+        region,
         statistic,
+        variable,
         version,
         format_,
     ):
         super().__init__(
-            region=region,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
             derived_variable=derived_variable,
-            model=model,
             ensemble_member=ensemble_member,
             experiment=experiment,
+            model=model,
+            region=region,
             statistic=statistic,
+            variable=variable,
             version=version,
             format_=format_,
         )

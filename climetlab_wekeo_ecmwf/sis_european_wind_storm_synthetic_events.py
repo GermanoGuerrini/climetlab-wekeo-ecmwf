@@ -20,12 +20,27 @@ class sis_european_wind_storm_synthetic_events(Main):
     ]
 
     string_selects = [
+        "month",
+        "year",
         "variable",
         "version_id",
-        "year",
-        "month",
     ]
 
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
     @normalize(
         "variable",
         [
@@ -75,21 +90,6 @@ class sis_european_wind_storm_synthetic_events(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "format_",
         [
             "tgz",
@@ -98,16 +98,16 @@ class sis_european_wind_storm_synthetic_events(Main):
     )
     def __init__(
         self,
+        month,
         variable,
         version_id,
         year,
-        month,
         format_,
     ):
         super().__init__(
+            month=month,
             variable=variable,
             version_id=version_id,
             year=year,
-            month=month,
             format_=format_,
         )

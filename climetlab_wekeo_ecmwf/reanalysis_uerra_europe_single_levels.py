@@ -22,12 +22,77 @@ class reanalysis_uerra_europe_single_levels(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
-        "day",
+        "year",
         "time",
+        "day",
     ]
 
+    @normalize(
+        "day",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "time",
+        [
+            "00:00",
+            "06:00",
+            "12:00",
+            "18:00",
+        ],
+        multiple=True,
+    )
     @normalize(
         "year",
         [
@@ -94,71 +159,6 @@ class reanalysis_uerra_europe_single_levels(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "day",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "time",
-        [
-            "00:00",
-            "06:00",
-            "12:00",
-            "18:00",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "origin",
         [
             "mescan_surfex",
@@ -198,19 +198,19 @@ class reanalysis_uerra_europe_single_levels(Main):
     )
     def __init__(
         self,
-        year,
-        month,
         day,
+        month,
         time,
+        year,
         origin,
         variable,
         format_,
     ):
         super().__init__(
-            year=year,
-            month=month,
             day=day,
+            month=month,
             time=time,
+            year=year,
             origin=origin,
             variable=variable,
             format_=format_,

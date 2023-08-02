@@ -21,20 +21,27 @@ class satellite_earth_radiation_budget(Main):
     ]
 
     string_selects = [
-        "variable",
-        "sensor",
-        "year",
         "month",
+        "year",
+        "sensor",
+        "variable",
     ]
 
     @normalize(
-        "variable",
+        "month",
         [
-            "all_available_variables",
-            "incoming_shortwave_radiation",
-            "outgoing_longwave_radiation",
-            "outgoing_shortwave_radiation",
-            "total_solar_irradiance",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
         ],
         multiple=True,
     )
@@ -45,6 +52,17 @@ class satellite_earth_radiation_budget(Main):
             "atsr2",
             "slstr_on_sentinel_3a",
             "slstr_on_sentinel_3b",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "all_available_variables",
+            "incoming_shortwave_radiation",
+            "outgoing_longwave_radiation",
+            "outgoing_shortwave_radiation",
+            "total_solar_irradiance",
         ],
         multiple=True,
     )
@@ -100,24 +118,6 @@ class satellite_earth_radiation_budget(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "origin",
         [
             "c3s_cci",
@@ -137,19 +137,19 @@ class satellite_earth_radiation_budget(Main):
     @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        variable,
-        sensor,
-        year,
         month,
+        sensor,
+        variable,
+        year,
         origin,
         format_,
         area=None,
     ):
         super().__init__(
-            variable=variable,
-            sensor=sensor,
-            year=year,
             month=month,
+            sensor=sensor,
+            variable=variable,
+            year=year,
             origin=origin,
             format_=format_,
             area=area,

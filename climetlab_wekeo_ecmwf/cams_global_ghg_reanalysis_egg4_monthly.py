@@ -20,103 +20,15 @@ class cams_global_ghg_reanalysis_egg4_monthly(Main):
     ]
 
     string_selects = [
+        "product_type",
+        "month",
         "variable",
-        "variable",
-        "variable",
-        "variable",
-        "variable",
-        "variable",
+        "time",
         "pressure_level",
         "year",
-        "month",
-        "product_type",
-        "time",
         "step",
     ]
 
-    @normalize(
-        "variable",
-        [
-            "snow_albedo",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "ch4_column_mean_molar_fraction",
-            "co2_column_mean_molar_fraction",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "accumulated_carbon_dioxide_ecosystem_respiration",
-            "accumulated_carbon_dioxide_gross_primary_production",
-            "accumulated_carbon_dioxide_net_ecosystem_exchange",
-            "flux_of_carbon_dioxide_ecosystem_respiration",
-            "flux_of_carbon_dioxide_gross_primary_production",
-            "flux_of_carbon_dioxide_net_ecosystem_exchange",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "2m_dewpoint_temperature",
-            "2m_temperature",
-            "mean_sea_level_pressure",
-            "sea_ice_cover",
-            "sea_surface_temperature",
-            "snow_depth",
-            "total_column_water",
-            "total_column_water_vapour",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "carbon_dioxide",
-            "methane",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "geopotential",
-            "relative_humidity",
-            "temperature",
-            "vertical_velocity",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "year",
-        [
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-        ],
-        multiple=True,
-    )
     @normalize(
         "month",
         [
@@ -144,13 +56,6 @@ class cams_global_ghg_reanalysis_egg4_monthly(Main):
         multiple=True,
     )
     @normalize(
-        "time",
-        [
-            "00:00",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "step",
         [
             "12",
@@ -161,6 +66,66 @@ class cams_global_ghg_reanalysis_egg4_monthly(Main):
             "3",
             "6",
             "9",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "time",
+        [
+            "00:00",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "2m_dewpoint_temperature",
+            "2m_temperature",
+            "accumulated_carbon_dioxide_ecosystem_respiration",
+            "accumulated_carbon_dioxide_gross_primary_production",
+            "accumulated_carbon_dioxide_net_ecosystem_exchange",
+            "carbon_dioxide",
+            "ch4_column_mean_molar_fraction",
+            "co2_column_mean_molar_fraction",
+            "flux_of_carbon_dioxide_ecosystem_respiration",
+            "flux_of_carbon_dioxide_gross_primary_production",
+            "flux_of_carbon_dioxide_net_ecosystem_exchange",
+            "geopotential",
+            "mean_sea_level_pressure",
+            "methane",
+            "relative_humidity",
+            "sea_ice_cover",
+            "sea_surface_temperature",
+            "snow_albedo",
+            "snow_depth",
+            "temperature",
+            "total_column_water",
+            "total_column_water_vapour",
+            "vertical_velocity",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
         ],
         multiple=True,
     )
@@ -205,33 +170,23 @@ class cams_global_ghg_reanalysis_egg4_monthly(Main):
     )
     def __init__(
         self,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
-        variable,
-        year,
         month,
         product_type,
-        time,
         step,
+        time,
+        variable,
+        year,
         format_,
         area=None,
         pressure_level=None,
     ):
         super().__init__(
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            variable=variable,
-            year=year,
             month=month,
             product_type=product_type,
-            time=time,
             step=step,
+            time=time,
+            variable=variable,
+            year=year,
             format_=format_,
             area=area,
             pressure_level=pressure_level,

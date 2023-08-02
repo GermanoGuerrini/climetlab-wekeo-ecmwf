@@ -20,41 +20,16 @@ class sis_european_risk_extreme_precipitation_indicators(Main):
     ]
 
     string_selects = [
-        "spatial_coverage",
-        "variable",
-        "city",
-        "product_type",
-        "temporal_aggregation",
         "percentile",
+        "city",
         "return_period",
+        "temporal_aggregation",
+        "product_type",
         "period",
-        "period",
+        "variable",
+        "spatial_coverage",
     ]
 
-    @normalize(
-        "spatial_coverage",
-        [
-            "city",
-            "europe",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "maximum_1_day_precipitation",
-            "maximum_5_day_precipitation",
-            "number_of_consecutive_wet_days",
-            "number_of_precipitation_days_exceeding_20mm",
-            "number_of_precipitation_days_exceeding_fixed_percentiles",
-            "number_of_wet_days",
-            "precipitation_at_fixed_percentiles",
-            "precipitation_at_fixed_return_periods",
-            "standardised_precipitation_exceeding_fixed_percentiles",
-            "total_precipitation",
-        ],
-        multiple=True,
-    )
     @normalize(
         "city",
         [
@@ -82,42 +57,11 @@ class sis_european_risk_extreme_precipitation_indicators(Main):
         multiple=True,
     )
     @normalize(
-        "product_type",
-        [
-            "e_obs",
-            "eca_d",
-            "era5",
-            "era5_2km",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "temporal_aggregation",
-        [
-            "30_year",
-            "daily",
-            "monthly",
-            "yearly",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "percentile",
         [
             "90th",
             "95th",
             "99th",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "return_period",
-        [
-            "10-yrs",
-            "100-yrs",
-            "25-yrs",
-            "5-yrs",
-            "50-yrs",
         ],
         multiple=True,
     )
@@ -164,6 +108,7 @@ class sis_european_risk_extreme_precipitation_indicators(Main):
             "1987",
             "1988",
             "1989",
+            "1989-2018",
             "1990",
             "1991",
             "1992",
@@ -198,9 +143,57 @@ class sis_european_risk_extreme_precipitation_indicators(Main):
         multiple=True,
     )
     @normalize(
-        "period",
+        "product_type",
         [
-            "1989-2018",
+            "e_obs",
+            "eca_d",
+            "era5",
+            "era5_2km",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "return_period",
+        [
+            "10-yrs",
+            "100-yrs",
+            "25-yrs",
+            "5-yrs",
+            "50-yrs",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "spatial_coverage",
+        [
+            "city",
+            "europe",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "temporal_aggregation",
+        [
+            "30_year",
+            "daily",
+            "monthly",
+            "yearly",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "maximum_1_day_precipitation",
+            "maximum_5_day_precipitation",
+            "number_of_consecutive_wet_days",
+            "number_of_precipitation_days_exceeding_20mm",
+            "number_of_precipitation_days_exceeding_fixed_percentiles",
+            "number_of_wet_days",
+            "precipitation_at_fixed_percentiles",
+            "precipitation_at_fixed_return_periods",
+            "standardised_precipitation_exceeding_fixed_percentiles",
+            "total_precipitation",
         ],
         multiple=True,
     )
@@ -213,26 +206,24 @@ class sis_european_risk_extreme_precipitation_indicators(Main):
     )
     def __init__(
         self,
-        spatial_coverage,
-        variable,
         city,
-        product_type,
-        temporal_aggregation,
         percentile,
+        period,
+        product_type,
         return_period,
-        period,
-        period,
+        spatial_coverage,
+        temporal_aggregation,
+        variable,
         format_,
     ):
         super().__init__(
-            spatial_coverage=spatial_coverage,
-            variable=variable,
             city=city,
-            product_type=product_type,
-            temporal_aggregation=temporal_aggregation,
             percentile=percentile,
+            period=period,
+            product_type=product_type,
             return_period=return_period,
-            period=period,
-            period=period,
+            spatial_coverage=spatial_coverage,
+            temporal_aggregation=temporal_aggregation,
+            variable=variable,
             format_=format_,
         )

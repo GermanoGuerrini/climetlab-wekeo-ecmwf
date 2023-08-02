@@ -20,16 +20,16 @@ class sis_health_vector(Main):
     ]
 
     string_selects = [
+        "ensemble_statistic",
         "variable",
         "experiment",
-        "ensemble_statistic",
     ]
 
     @normalize(
-        "variable",
+        "ensemble_statistic",
         [
-            "season_length",
-            "suitability",
+            "ensemble_members_average",
+            "ensemble_members_standard_deviation",
         ],
         multiple=True,
     )
@@ -42,10 +42,10 @@ class sis_health_vector(Main):
         multiple=True,
     )
     @normalize(
-        "ensemble_statistic",
+        "variable",
         [
-            "ensemble_members_average",
-            "ensemble_members_standard_deviation",
+            "season_length",
+            "suitability",
         ],
         multiple=True,
     )
@@ -58,14 +58,14 @@ class sis_health_vector(Main):
     )
     def __init__(
         self,
-        variable,
-        experiment,
         ensemble_statistic,
+        experiment,
+        variable,
         format_,
     ):
         super().__init__(
-            variable=variable,
-            experiment=experiment,
             ensemble_statistic=ensemble_statistic,
+            experiment=experiment,
+            variable=variable,
             format_=format_,
         )

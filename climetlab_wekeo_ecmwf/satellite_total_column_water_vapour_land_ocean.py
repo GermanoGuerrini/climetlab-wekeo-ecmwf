@@ -22,27 +22,10 @@ class satellite_total_column_water_vapour_land_ocean(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
+        "year",
     ]
 
-    @normalize(
-        "year",
-        [
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-        ],
-        multiple=True,
-    )
     @normalize(
         "month",
         [
@@ -58,6 +41,23 @@ class satellite_total_column_water_vapour_land_ocean(Main):
             "10",
             "11",
             "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
         ],
         multiple=True,
     )
@@ -83,15 +83,15 @@ class satellite_total_column_water_vapour_land_ocean(Main):
     )
     def __init__(
         self,
-        year,
         month,
+        year,
         horizontal_aggregation,
         variable="all",
         format_,
     ):
         super().__init__(
-            year=year,
             month=month,
+            year=year,
             horizontal_aggregation=horizontal_aggregation,
             variable=variable,
             format_=format_,

@@ -26,6 +26,14 @@ class sis_shipping_arctic(Main):
     ]
 
     @normalize(
+        "experiment",
+        [
+            "RCP4.5",
+            "RCP8.5",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "variable",
         [
             "arctic_accessibility_index_map_arc4",
@@ -50,14 +58,6 @@ class sis_shipping_arctic(Main):
         multiple=True,
     )
     @normalize(
-        "experiment",
-        [
-            "RCP4.5",
-            "RCP8.5",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "product_type",
         [
             "ensemble_mean",
@@ -74,14 +74,14 @@ class sis_shipping_arctic(Main):
     )
     def __init__(
         self,
-        variable,
         experiment,
+        variable,
         product_type,
         format_,
     ):
         super().__init__(
-            variable=variable,
             experiment=experiment,
+            variable=variable,
             product_type=product_type,
             format_=format_,
         )

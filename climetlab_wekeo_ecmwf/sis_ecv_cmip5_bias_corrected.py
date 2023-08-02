@@ -24,8 +24,6 @@ class sis_ecv_cmip5_bias_corrected(Main):
 
     string_selects = [
         "period",
-        "period",
-        "period",
     ]
 
     @normalize(
@@ -72,12 +70,6 @@ class sis_ecv_cmip5_bias_corrected(Main):
             "19960101-20001231",
             "19991201-20041130",
             "19991201-20051130",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "period",
-        [
             "20000101-20041231",
             "20000101-20051231",
             "20010101-20051231",
@@ -115,12 +107,6 @@ class sis_ecv_cmip5_bias_corrected(Main):
             "20451201-20501130",
             "20451201-20551130",
             "20460101-20501231",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "period",
-        [
             "20500101-20591231",
             "20501201-20551130",
             "20510101-20551231",
@@ -211,16 +197,12 @@ class sis_ecv_cmip5_bias_corrected(Main):
     def __init__(
         self,
         period,
-        period,
-        period,
         variable,
         model,
         experiment,
         format_,
     ):
         super().__init__(
-            period=period,
-            period=period,
             period=period,
             variable=variable,
             model=model,

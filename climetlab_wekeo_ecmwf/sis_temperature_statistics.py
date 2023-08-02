@@ -22,11 +22,27 @@ class sis_temperature_statistics(Main):
     ]
 
     string_selects = [
+        "ensemble_statistic",
         "statistic",
         "experiment",
-        "ensemble_statistic",
     ]
 
+    @normalize(
+        "ensemble_statistic",
+        [
+            "ensemble_members_average",
+            "ensemble_members_standard_deviation",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "experiment",
+        [
+            "rcp4_5",
+            "rcp8_5",
+        ],
+        multiple=True,
+    )
     @normalize(
         "statistic",
         [
@@ -41,22 +57,6 @@ class sis_temperature_statistics(Main):
             "97th_percentile",
             "99th_percentile",
             "time_average",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "experiment",
-        [
-            "rcp4_5",
-            "rcp8_5",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "ensemble_statistic",
-        [
-            "ensemble_members_average",
-            "ensemble_members_standard_deviation",
         ],
         multiple=True,
     )
@@ -85,17 +85,17 @@ class sis_temperature_statistics(Main):
     )
     def __init__(
         self,
-        statistic,
-        experiment,
         ensemble_statistic,
+        experiment,
+        statistic,
         variable,
         period,
         format_,
     ):
         super().__init__(
-            statistic=statistic,
-            experiment=experiment,
             ensemble_statistic=ensemble_statistic,
+            experiment=experiment,
+            statistic=statistic,
             variable=variable,
             period=period,
             format_=format_,

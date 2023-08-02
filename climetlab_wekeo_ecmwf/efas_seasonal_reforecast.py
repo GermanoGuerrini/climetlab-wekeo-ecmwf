@@ -22,18 +22,27 @@ class efas_seasonal_reforecast(Main):
     ]
 
     string_selects = [
-        "soil_level",
         "hyear",
-        "hmonth",
         "leadtime_hour",
+        "soil_level",
+        "hmonth",
     ]
 
     @normalize(
-        "soil_level",
+        "hmonth",
         [
-            "1",
-            "2",
-            "3",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
         ],
         multiple=True,
     )
@@ -70,24 +79,6 @@ class efas_seasonal_reforecast(Main):
             "2018",
             "2019",
             "2020",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "hmonth",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
         ],
         multiple=True,
     )
@@ -313,6 +304,15 @@ class efas_seasonal_reforecast(Main):
         multiple=True,
     )
     @normalize(
+        "soil_level",
+        [
+            "1",
+            "2",
+            "3",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "variable",
         [
             "elevation",
@@ -341,19 +341,19 @@ class efas_seasonal_reforecast(Main):
     )
     def __init__(
         self,
-        soil_level,
-        hyear,
         hmonth,
+        hyear,
         leadtime_hour,
+        soil_level,
         variable,
         model_levels,
         format_,
     ):
         super().__init__(
-            soil_level=soil_level,
-            hyear=hyear,
             hmonth=hmonth,
+            hyear=hyear,
             leadtime_hour=leadtime_hour,
+            soil_level=soil_level,
             variable=variable,
             model_levels=model_levels,
             format_=format_,

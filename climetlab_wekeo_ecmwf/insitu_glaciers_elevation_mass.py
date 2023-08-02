@@ -26,14 +26,6 @@ class insitu_glaciers_elevation_mass(Main):
     ]
 
     @normalize(
-        "product_type",
-        [
-            "elevation_change",
-            "mass_balance",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "file_version",
         [
             "20170405",
@@ -42,6 +34,14 @@ class insitu_glaciers_elevation_mass(Main):
             "20181103",
             "20191202",
             "20200824",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "product_type",
+        [
+            "elevation_change",
+            "mass_balance",
         ],
         multiple=True,
     )
@@ -60,14 +60,14 @@ class insitu_glaciers_elevation_mass(Main):
     )
     def __init__(
         self,
-        product_type,
         file_version,
+        product_type,
         variable="all",
         format_,
     ):
         super().__init__(
-            product_type=product_type,
             file_version=file_version,
+            product_type=product_type,
             variable=variable,
             format_=format_,
         )

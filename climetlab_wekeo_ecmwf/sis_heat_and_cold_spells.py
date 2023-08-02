@@ -21,16 +21,16 @@ class sis_heat_and_cold_spells(Main):
     ]
 
     string_selects = [
+        "ensemble_statistic",
         "variable",
         "experiment",
-        "ensemble_statistic",
     ]
 
     @normalize(
-        "variable",
+        "ensemble_statistic",
         [
-            "cold_spell_days",
-            "heat_wave_days",
+            "ensemble_members_average",
+            "ensemble_members_standard_deviation",
         ],
         multiple=True,
     )
@@ -43,10 +43,10 @@ class sis_heat_and_cold_spells(Main):
         multiple=True,
     )
     @normalize(
-        "ensemble_statistic",
+        "variable",
         [
-            "ensemble_members_average",
-            "ensemble_members_standard_deviation",
+            "cold_spell_days",
+            "heat_wave_days",
         ],
         multiple=True,
     )
@@ -67,16 +67,16 @@ class sis_heat_and_cold_spells(Main):
     )
     def __init__(
         self,
-        variable,
-        experiment,
         ensemble_statistic,
+        experiment,
+        variable,
         definition,
         format_,
     ):
         super().__init__(
-            variable=variable,
-            experiment=experiment,
             ensemble_statistic=ensemble_statistic,
+            experiment=experiment,
+            variable=variable,
             definition=definition,
             format_=format_,
         )

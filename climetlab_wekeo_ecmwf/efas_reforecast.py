@@ -22,75 +22,14 @@ class efas_reforecast(Main):
     ]
 
     string_selects = [
-        "product_type",
+        "hday",
         "soil_level",
+        "product_type",
         "hyear",
         "hmonth",
-        "hday",
         "leadtime_hour",
     ]
 
-    @normalize(
-        "product_type",
-        [
-            "control_forecast",
-            "ensemble_perturbed_forecasts",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "soil_level",
-        [
-            "1",
-            "2",
-            "3",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "hyear",
-        [
-            "1999",
-            "2000",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "hmonth",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
     @normalize(
         "hday",
         [
@@ -125,6 +64,50 @@ class efas_reforecast(Main):
             "29",
             "30",
             "31",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "hmonth",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "hyear",
+        [
+            "1999",
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
         ],
         multiple=True,
     )
@@ -320,6 +303,23 @@ class efas_reforecast(Main):
         multiple=True,
     )
     @normalize(
+        "product_type",
+        [
+            "control_forecast",
+            "ensemble_perturbed_forecasts",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "soil_level",
+        [
+            "1",
+            "2",
+            "3",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "variable",
         [
             "elevation",
@@ -348,23 +348,23 @@ class efas_reforecast(Main):
     )
     def __init__(
         self,
+        hday,
+        hmonth,
+        hyear,
+        leadtime_hour,
         product_type,
         soil_level,
-        hyear,
-        hmonth,
-        hday,
-        leadtime_hour,
         variable,
         model_levels,
         format_,
     ):
         super().__init__(
+            hday=hday,
+            hmonth=hmonth,
+            hyear=hyear,
+            leadtime_hour=leadtime_hour,
             product_type=product_type,
             soil_level=soil_level,
-            hyear=hyear,
-            hmonth=hmonth,
-            hday=hday,
-            leadtime_hour=leadtime_hour,
             variable=variable,
             model_levels=model_levels,
             format_=format_,

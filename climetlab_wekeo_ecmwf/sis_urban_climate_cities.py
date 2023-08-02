@@ -21,9 +21,9 @@ class sis_urban_climate_cities(Main):
     ]
 
     string_selects = [
+        "month",
         "city",
         "year",
-        "month",
     ]
 
     @normalize(
@@ -133,22 +133,6 @@ class sis_urban_climate_cities(Main):
         multiple=True,
     )
     @normalize(
-        "year",
-        [
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "month",
         [
             "01",
@@ -163,6 +147,22 @@ class sis_urban_climate_cities(Main):
             "10",
             "11",
             "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
         ],
         multiple=True,
     )
@@ -187,15 +187,15 @@ class sis_urban_climate_cities(Main):
     def __init__(
         self,
         city,
-        year,
         month,
+        year,
         variable,
         format_,
     ):
         super().__init__(
             city=city,
-            year=year,
             month=month,
+            year=year,
             variable=variable,
             format_=format_,
         )

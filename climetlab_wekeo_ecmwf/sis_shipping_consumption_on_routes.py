@@ -23,20 +23,18 @@ class sis_shipping_consumption_on_routes(Main):
     ]
 
     string_selects = [
-        "variable",
-        "statistic",
-        "year",
         "forecast_start_month",
+        "year",
+        "statistic",
+        "variable",
     ]
 
     @normalize(
-        "variable",
+        "forecast_start_month",
         [
-            "fuel_consumption_at_fixed_shaft_power",
-            "fuel_consumption_at_fixed_speed",
-            "shaft_power_at_fixed_speed",
-            "ship_speed_at_fixed_shaft_power",
-            "trip_duration_at_fixed_shaft_power",
+            "february",
+            "january",
+            "march",
         ],
         multiple=True,
     )
@@ -53,6 +51,17 @@ class sis_shipping_consumption_on_routes(Main):
             "monthly_average",
             "seasonal_forecast_ensemble_average",
             "seasonal_forecast_monthly_average",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "fuel_consumption_at_fixed_shaft_power",
+            "fuel_consumption_at_fixed_speed",
+            "shaft_power_at_fixed_speed",
+            "ship_speed_at_fixed_shaft_power",
+            "trip_duration_at_fixed_shaft_power",
         ],
         multiple=True,
     )
@@ -85,15 +94,6 @@ class sis_shipping_consumption_on_routes(Main):
             "2016",
             "2017",
             "2019",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "forecast_start_month",
-        [
-            "february",
-            "january",
-            "march",
         ],
         multiple=True,
     )
@@ -150,20 +150,20 @@ class sis_shipping_consumption_on_routes(Main):
     )
     def __init__(
         self,
-        variable,
-        statistic,
-        year,
         forecast_start_month,
+        statistic,
+        variable,
+        year,
         product_type,
         departure_port,
         arrival_port,
         format_,
     ):
         super().__init__(
-            variable=variable,
-            statistic=statistic,
-            year=year,
             forecast_start_month=forecast_start_month,
+            statistic=statistic,
+            variable=variable,
+            year=year,
             product_type=product_type,
             departure_port=departure_port,
             arrival_port=arrival_port,

@@ -21,33 +21,48 @@ class cams_global_radiative_forcings(Main):
     ]
 
     string_selects = [
-        "variable",
-        "band",
-        "sky_type",
-        "level",
-        "version",
-        "year",
         "month",
+        "year",
+        "variable",
+        "version",
+        "sky_type",
+        "band",
+        "level",
     ]
 
-    @normalize(
-        "variable",
-        [
-            "radiative_forcing_of_aerosol_cloud_interactions",
-            "radiative_forcing_of_aerosol_radiation_interactions",
-            "radiative_forcing_of_carbon_dioxide",
-            "radiative_forcing_of_methane",
-            "radiative_forcing_of_stratospheric_ozone",
-            "radiative_forcing_of_tropospheric_ozone",
-        ],
-        multiple=True,
-    )
     @normalize(
         "band",
         [
             "long_wave",
             "net",
             "short_wave",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "level",
+        [
+            "surface",
+            "top_of_atmosphere",
+            "tropopause",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
         ],
         multiple=True,
     )
@@ -60,11 +75,14 @@ class cams_global_radiative_forcings(Main):
         multiple=True,
     )
     @normalize(
-        "level",
+        "variable",
         [
-            "surface",
-            "top_of_atmosphere",
-            "tropopause",
+            "radiative_forcing_of_aerosol_cloud_interactions",
+            "radiative_forcing_of_aerosol_radiation_interactions",
+            "radiative_forcing_of_carbon_dioxide",
+            "radiative_forcing_of_methane",
+            "radiative_forcing_of_stratospheric_ozone",
+            "radiative_forcing_of_tropospheric_ozone",
         ],
         multiple=True,
     )
@@ -99,24 +117,6 @@ class cams_global_radiative_forcings(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "forcing_type",
         [
             "effective",
@@ -133,24 +133,24 @@ class cams_global_radiative_forcings(Main):
     )
     def __init__(
         self,
-        variable,
         band,
-        sky_type,
         level,
+        month,
+        sky_type,
+        variable,
         version,
         year,
-        month,
         forcing_type,
         format_,
     ):
         super().__init__(
-            variable=variable,
             band=band,
-            sky_type=sky_type,
             level=level,
+            month=month,
+            sky_type=sky_type,
+            variable=variable,
             version=version,
             year=year,
-            month=month,
             forcing_type=forcing_type,
             format_=format_,
         )

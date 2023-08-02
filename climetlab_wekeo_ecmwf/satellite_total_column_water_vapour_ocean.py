@@ -24,10 +24,28 @@ class satellite_total_column_water_vapour_ocean(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
+        "year",
     ]
 
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
     @normalize(
         "year",
         [
@@ -68,24 +86,6 @@ class satellite_total_column_water_vapour_ocean(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "origin",
         [
             "c3s",
@@ -121,8 +121,8 @@ class satellite_total_column_water_vapour_ocean(Main):
     )
     def __init__(
         self,
-        year,
         month,
+        year,
         origin,
         climate_data_record_type,
         temporal_aggregation,
@@ -130,8 +130,8 @@ class satellite_total_column_water_vapour_ocean(Main):
         format_,
     ):
         super().__init__(
-            year=year,
             month=month,
+            year=year,
             origin=origin,
             climate_data_record_type=climate_data_record_type,
             temporal_aggregation=temporal_aggregation,

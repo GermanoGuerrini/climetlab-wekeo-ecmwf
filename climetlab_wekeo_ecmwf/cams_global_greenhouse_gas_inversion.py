@@ -25,10 +25,28 @@ class cams_global_greenhouse_gas_inversion(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
+        "year",
     ]
 
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
     @normalize(
         "year",
         [
@@ -76,24 +94,6 @@ class cams_global_greenhouse_gas_inversion(Main):
             "2020",
             "2021",
             "2022",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
         ],
         multiple=True,
     )
@@ -158,8 +158,8 @@ class cams_global_greenhouse_gas_inversion(Main):
     )
     def __init__(
         self,
-        year,
         month,
+        year,
         variable,
         quantity,
         input_observations,
@@ -168,8 +168,8 @@ class cams_global_greenhouse_gas_inversion(Main):
         format_,
     ):
         super().__init__(
-            year=year,
             month=month,
+            year=year,
             variable=variable,
             quantity=quantity,
             input_observations=input_observations,

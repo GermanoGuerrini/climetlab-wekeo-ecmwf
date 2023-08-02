@@ -22,58 +22,11 @@ class satellite_upper_troposphere_humidity(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
+        "year",
         "day",
     ]
 
-    @normalize(
-        "year",
-        [
-            "1999",
-            "2000",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
     @normalize(
         "day",
         [
@@ -112,6 +65,53 @@ class satellite_upper_troposphere_humidity(Main):
         multiple=True,
     )
     @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "1999",
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "sensor_on_satellite",
         [
             "amsu_b_on_noaa_15",
@@ -140,18 +140,18 @@ class satellite_upper_troposphere_humidity(Main):
     @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        year,
-        month,
         day,
+        month,
+        year,
         sensor_on_satellite,
         variable="all",
         format_,
         area=None,
     ):
         super().__init__(
-            year=year,
-            month=month,
             day=day,
+            month=month,
+            year=year,
             sensor_on_satellite=sensor_on_satellite,
             variable=variable,
             format_=format_,

@@ -21,13 +21,68 @@ class reanalysis_uerra_europe_pressure_levels(Main):
     ]
 
     string_selects = [
-        "pressure_level",
-        "year",
         "month",
-        "day",
         "time",
+        "pressure_level",
+        "day",
+        "year",
     ]
 
+    @normalize(
+        "day",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
     @normalize(
         "pressure_level",
         [
@@ -55,6 +110,16 @@ class reanalysis_uerra_europe_pressure_levels(Main):
             "925",
             "950",
             "975",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "time",
+        [
+            "00:00",
+            "06:00",
+            "12:00",
+            "18:00",
         ],
         multiple=True,
     )
@@ -124,71 +189,6 @@ class reanalysis_uerra_europe_pressure_levels(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "day",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "time",
-        [
-            "00:00",
-            "06:00",
-            "12:00",
-            "18:00",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "variable",
         [
             "geopotential",
@@ -208,20 +208,20 @@ class reanalysis_uerra_europe_pressure_levels(Main):
     )
     def __init__(
         self,
-        pressure_level,
-        year,
-        month,
         day,
+        month,
+        pressure_level,
         time,
+        year,
         variable,
         format_,
     ):
         super().__init__(
-            pressure_level=pressure_level,
-            year=year,
-            month=month,
             day=day,
+            month=month,
+            pressure_level=pressure_level,
             time=time,
+            year=year,
             variable=variable,
             format_=format_,
         )

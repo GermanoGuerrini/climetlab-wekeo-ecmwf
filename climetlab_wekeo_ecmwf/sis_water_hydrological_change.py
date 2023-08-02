@@ -21,23 +21,39 @@ class sis_water_hydrological_change(Main):
     ]
 
     string_selects = [
-        "variable",
         "time_aggregation",
         "gcm_model",
+        "variable",
         "experiment",
         "hydrological_model",
     ]
 
     @normalize(
-        "variable",
+        "experiment",
         [
-            "air_temperature",
-            "groundwater_recharge",
-            "potential_evapotranspiration",
-            "precipitation",
-            "river_discharge",
-            "snow_water_equivalent",
-            "volumetric_soil_moisture",
+            "rcp_2_6",
+            "rcp_8_5",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "gcm_model",
+        [
+            "esm_chem",
+            "gfdl_esm2m",
+            "hadgem2_es",
+            "ipsl_cm5a_lr",
+            "noresm1_m",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "hydrological_model",
+        [
+            "mesoscale_hydrological_model",
+            "noah_mp",
+            "pcr_globwb",
+            "variable_infiltration_capacity",
         ],
         multiple=True,
     )
@@ -64,31 +80,15 @@ class sis_water_hydrological_change(Main):
         multiple=True,
     )
     @normalize(
-        "gcm_model",
+        "variable",
         [
-            "esm_chem",
-            "gfdl_esm2m",
-            "hadgem2_es",
-            "ipsl_cm5a_lr",
-            "noresm1_m",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "experiment",
-        [
-            "rcp_2_6",
-            "rcp_8_5",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "hydrological_model",
-        [
-            "mesoscale_hydrological_model",
-            "noah_mp",
-            "pcr_globwb",
-            "variable_infiltration_capacity",
+            "air_temperature",
+            "groundwater_recharge",
+            "potential_evapotranspiration",
+            "precipitation",
+            "river_discharge",
+            "snow_water_equivalent",
+            "volumetric_soil_moisture",
         ],
         multiple=True,
     )
@@ -115,20 +115,20 @@ class sis_water_hydrological_change(Main):
     )
     def __init__(
         self,
-        variable,
-        time_aggregation,
-        gcm_model,
         experiment,
+        gcm_model,
         hydrological_model,
+        time_aggregation,
+        variable,
         statistic,
         format_,
     ):
         super().__init__(
-            variable=variable,
-            time_aggregation=time_aggregation,
-            gcm_model=gcm_model,
             experiment=experiment,
+            gcm_model=gcm_model,
             hydrological_model=hydrological_model,
+            time_aggregation=time_aggregation,
+            variable=variable,
             statistic=statistic,
             format_=format_,
         )

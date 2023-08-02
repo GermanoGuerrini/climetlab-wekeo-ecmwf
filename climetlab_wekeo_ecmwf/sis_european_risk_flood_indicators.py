@@ -20,33 +20,12 @@ class sis_european_risk_flood_indicators(Main):
     ]
 
     string_selects = [
-        "variable",
-        "return_period",
-        "city",
         "dem",
+        "city",
+        "return_period",
+        "variable",
     ]
 
-    @normalize(
-        "variable",
-        [
-            "expected_damage",
-            "urban_depression",
-            "water_depth",
-            "water_mask",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "return_period",
-        [
-            "10-yrs",
-            "100-yrs",
-            "25-yrs",
-            "5-yrs",
-            "50-yrs",
-        ],
-        multiple=True,
-    )
     @normalize(
         "city",
         [
@@ -82,6 +61,27 @@ class sis_european_risk_flood_indicators(Main):
         multiple=True,
     )
     @normalize(
+        "return_period",
+        [
+            "10-yrs",
+            "100-yrs",
+            "25-yrs",
+            "5-yrs",
+            "50-yrs",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "expected_damage",
+            "urban_depression",
+            "water_depth",
+            "water_mask",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "format_",
         [
             "tgz",
@@ -90,16 +90,16 @@ class sis_european_risk_flood_indicators(Main):
     )
     def __init__(
         self,
-        variable,
-        return_period,
         city,
         dem,
+        return_period,
+        variable,
         format_,
     ):
         super().__init__(
-            variable=variable,
-            return_period=return_period,
             city=city,
             dem=dem,
+            return_period=return_period,
+            variable=variable,
             format_=format_,
         )

@@ -20,25 +20,16 @@ class cams_global_radiative_forcing_auxilliary_variables(Main):
     ]
 
     string_selects = [
-        "variable",
         "aerosol_type",
-        "level",
-        "band",
-        "sky_type",
-        "version",
-        "year",
         "month",
+        "year",
+        "variable",
+        "version",
+        "sky_type",
+        "band",
+        "level",
     ]
 
-    @normalize(
-        "variable",
-        [
-            "aerosol_absorption_optical_depth_550nm",
-            "aerosol_optical_depth_550nm",
-            "aerosol_radiation_effect",
-        ],
-        multiple=True,
-    )
     @normalize(
         "aerosol_type",
         [
@@ -51,6 +42,13 @@ class cams_global_radiative_forcing_auxilliary_variables(Main):
         multiple=True,
     )
     @normalize(
+        "band",
+        [
+            "short_wave",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "level",
         [
             "surface",
@@ -59,9 +57,20 @@ class cams_global_radiative_forcing_auxilliary_variables(Main):
         multiple=True,
     )
     @normalize(
-        "band",
+        "month",
         [
-            "short_wave",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
         ],
         multiple=True,
     )
@@ -69,6 +78,15 @@ class cams_global_radiative_forcing_auxilliary_variables(Main):
         "sky_type",
         [
             "clear_sky",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "aerosol_absorption_optical_depth_550nm",
+            "aerosol_optical_depth_550nm",
+            "aerosol_radiation_effect",
         ],
         multiple=True,
     )
@@ -101,24 +119,6 @@ class cams_global_radiative_forcing_auxilliary_variables(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "format_",
         [
             "tgz",
@@ -127,24 +127,24 @@ class cams_global_radiative_forcing_auxilliary_variables(Main):
     )
     def __init__(
         self,
-        variable,
         aerosol_type,
-        level,
         band,
+        level,
+        month,
         sky_type,
+        variable,
         version,
         year,
-        month,
         format_,
     ):
         super().__init__(
-            variable=variable,
             aerosol_type=aerosol_type,
-            level=level,
             band=band,
+            level=level,
+            month=month,
             sky_type=sky_type,
+            variable=variable,
             version=version,
             year=year,
-            month=month,
             format_=format_,
         )

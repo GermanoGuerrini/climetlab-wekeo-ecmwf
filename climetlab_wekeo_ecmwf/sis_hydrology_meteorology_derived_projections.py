@@ -26,32 +26,19 @@ class sis_hydrology_meteorology_derived_projections(Main):
     ]
 
     string_selects = [
-        "variable",
         "time_aggregation",
-        "experiment",
+        "period",
+        "variable",
         "ensemble_member",
-        "period",
-        "period",
-        "period",
+        "experiment",
     ]
 
     @normalize(
-        "variable",
+        "ensemble_member",
         [
-            "2m_air_temperature",
-            "highest_5_day_precipitation_amount",
-            "longest_dry_spells",
-            "number_of_dry_spells",
-            "precipitation",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "time_aggregation",
-        [
-            "annual_mean",
-            "daily",
-            "monthly_mean",
+            "r12i1p1",
+            "r1i1p1",
+            "r2i1p1",
         ],
         multiple=True,
     )
@@ -67,38 +54,11 @@ class sis_hydrology_meteorology_derived_projections(Main):
         multiple=True,
     )
     @normalize(
-        "ensemble_member",
-        [
-            "r12i1p1",
-            "r1i1p1",
-            "r2i1p1",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "period",
-        [
-            "1971_2000",
-            "2011_2040",
-            "2041_2070",
-            "2071_2100",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "period",
-        [
-            "1_5_c",
-            "2_0_c",
-            "3_0_c",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "period",
         [
             "1970",
             "1971",
+            "1971_2000",
             "1972",
             "1973",
             "1974",
@@ -127,6 +87,7 @@ class sis_hydrology_meteorology_derived_projections(Main):
             "1997",
             "1998",
             "1999",
+            "1_5_c",
             "2000",
             "2001",
             "2002",
@@ -139,6 +100,7 @@ class sis_hydrology_meteorology_derived_projections(Main):
             "2009",
             "2010",
             "2011",
+            "2011_2040",
             "2012",
             "2013",
             "2014",
@@ -169,6 +131,7 @@ class sis_hydrology_meteorology_derived_projections(Main):
             "2039",
             "2040",
             "2041",
+            "2041_2070",
             "2042",
             "2043",
             "2044",
@@ -199,6 +162,7 @@ class sis_hydrology_meteorology_derived_projections(Main):
             "2069",
             "2070",
             "2071",
+            "2071_2100",
             "2072",
             "2073",
             "2074",
@@ -228,6 +192,28 @@ class sis_hydrology_meteorology_derived_projections(Main):
             "2098",
             "2099",
             "2100",
+            "2_0_c",
+            "3_0_c",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "time_aggregation",
+        [
+            "annual_mean",
+            "daily",
+            "monthly_mean",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "2m_air_temperature",
+            "highest_5_day_precipitation_amount",
+            "longest_dry_spells",
+            "number_of_dry_spells",
+            "precipitation",
         ],
         multiple=True,
     )
@@ -286,13 +272,11 @@ class sis_hydrology_meteorology_derived_projections(Main):
     )
     def __init__(
         self,
-        variable,
-        time_aggregation,
-        experiment,
         ensemble_member,
+        experiment,
         period,
-        period,
-        period,
+        time_aggregation,
+        variable,
         product_type,
         processing_type,
         variable_type,
@@ -302,13 +286,11 @@ class sis_hydrology_meteorology_derived_projections(Main):
         format_,
     ):
         super().__init__(
-            variable=variable,
-            time_aggregation=time_aggregation,
-            experiment=experiment,
             ensemble_member=ensemble_member,
+            experiment=experiment,
             period=period,
-            period=period,
-            period=period,
+            time_aggregation=time_aggregation,
+            variable=variable,
             product_type=product_type,
             processing_type=processing_type,
             variable_type=variable_type,

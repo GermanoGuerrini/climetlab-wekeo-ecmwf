@@ -21,13 +21,50 @@ class reanalysis_uerra_europe_height_levels(Main):
     ]
 
     string_selects = [
-        "height_level",
-        "year",
         "month",
-        "day",
         "time",
+        "height_level",
+        "day",
+        "year",
     ]
 
+    @normalize(
+        "day",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+        ],
+        multiple=True,
+    )
     @normalize(
         "height_level",
         [
@@ -42,6 +79,34 @@ class reanalysis_uerra_europe_height_levels(Main):
             "500_m",
             "50_m",
             "75_m",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "time",
+        [
+            "00:00",
+            "06:00",
+            "12:00",
+            "18:00",
         ],
         multiple=True,
     )
@@ -111,71 +176,6 @@ class reanalysis_uerra_europe_height_levels(Main):
         multiple=True,
     )
     @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "day",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "time",
-        [
-            "00:00",
-            "06:00",
-            "12:00",
-            "18:00",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "variable",
         [
             "pressure",
@@ -194,20 +194,20 @@ class reanalysis_uerra_europe_height_levels(Main):
     )
     def __init__(
         self,
-        height_level,
-        year,
-        month,
         day,
+        height_level,
+        month,
         time,
+        year,
         variable,
         format_,
     ):
         super().__init__(
-            height_level=height_level,
-            year=year,
-            month=month,
             day=day,
+            height_level=height_level,
+            month=month,
             time=time,
+            year=year,
             variable=variable,
             format_=format_,
         )

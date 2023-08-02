@@ -20,52 +20,14 @@ class cams_europe_air_quality_reanalyses(Main):
     ]
 
     string_selects = [
+        "month",
+        "year",
+        "type",
         "variable",
         "model",
         "level",
-        "type",
-        "year",
-        "month",
     ]
 
-    @normalize(
-        "variable",
-        [
-            "ammonia",
-            "carbon_monoxide",
-            "dust",
-            "nitrogen_dioxide",
-            "nitrogen_monoxide",
-            "non_methane_vocs",
-            "ozone",
-            "particulate_matter_10um",
-            "particulate_matter_2.5um",
-            "peroxyacyl_nitrates",
-            "pm10_wildfires",
-            "residential_elementary_carbon",
-            "secondary_inorganic_aerosol",
-            "sulphur_dioxide",
-            "total_elementary_carbon",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "model",
-        [
-            "chimere",
-            "dehm",
-            "emep",
-            "ensemble",
-            "euradim",
-            "gemaq",
-            "lotos",
-            "match",
-            "minni",
-            "mocage",
-            "silam",
-        ],
-        multiple=True,
-    )
     @normalize(
         "level",
         [
@@ -83,21 +45,19 @@ class cams_europe_air_quality_reanalyses(Main):
         multiple=True,
     )
     @normalize(
-        "type",
+        "model",
         [
-            "interim_reanalysis",
-            "validated_reanalysis",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "year",
-        [
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
+            "chimere",
+            "dehm",
+            "emep",
+            "ensemble",
+            "euradim",
+            "gemaq",
+            "lotos",
+            "match",
+            "minni",
+            "mocage",
+            "silam",
         ],
         multiple=True,
     )
@@ -120,6 +80,46 @@ class cams_europe_air_quality_reanalyses(Main):
         multiple=True,
     )
     @normalize(
+        "type",
+        [
+            "interim_reanalysis",
+            "validated_reanalysis",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "variable",
+        [
+            "ammonia",
+            "carbon_monoxide",
+            "dust",
+            "nitrogen_dioxide",
+            "nitrogen_monoxide",
+            "non_methane_vocs",
+            "ozone",
+            "particulate_matter_10um",
+            "particulate_matter_2.5um",
+            "peroxyacyl_nitrates",
+            "pm10_wildfires",
+            "residential_elementary_carbon",
+            "secondary_inorganic_aerosol",
+            "sulphur_dioxide",
+            "total_elementary_carbon",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "format_",
         [
             "tgz",
@@ -128,20 +128,20 @@ class cams_europe_air_quality_reanalyses(Main):
     )
     def __init__(
         self,
-        variable,
-        model,
         level,
-        type,
-        year,
+        model,
         month,
+        type,
+        variable,
+        year,
         format_,
     ):
         super().__init__(
-            variable=variable,
-            model=model,
             level=level,
-            type=type,
-            year=year,
+            model=model,
             month=month,
+            type=type,
+            variable=variable,
+            year=year,
             format_=format_,
         )

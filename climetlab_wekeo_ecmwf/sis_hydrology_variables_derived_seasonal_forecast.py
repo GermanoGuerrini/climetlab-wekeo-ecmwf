@@ -20,40 +20,13 @@ class sis_hydrology_variables_derived_seasonal_forecast(Main):
     ]
 
     string_selects = [
-        "variable",
-        "variable",
-        "variable",
-        "hydrological_model",
-        "year",
         "month",
+        "variable",
         "version",
+        "year",
+        "hydrological_model",
     ]
 
-    @normalize(
-        "variable",
-        [
-            "river_discharge",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "reference_river_discharge_lower_tercile",
-            "reference_river_discharge_upper_tercile",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "variable",
-        [
-            "brier_skill_score_above_normal_conditions",
-            "brier_skill_score_below_normal_conditions",
-            "continuous_ranked_probability_skill_score",
-            "fair_ranked_probability_skill_score",
-        ],
-        multiple=True,
-    )
     @normalize(
         "hydrological_model",
         [
@@ -68,16 +41,6 @@ class sis_hydrology_variables_derived_seasonal_forecast(Main):
             "e_hypegrid",
             "lisflood_efas",
             "vic_wur",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "year",
-        [
-            "2020",
-            "2021",
-            "2022",
-            "2023",
         ],
         multiple=True,
     )
@@ -100,9 +63,32 @@ class sis_hydrology_variables_derived_seasonal_forecast(Main):
         multiple=True,
     )
     @normalize(
+        "variable",
+        [
+            "brier_skill_score_above_normal_conditions",
+            "brier_skill_score_below_normal_conditions",
+            "continuous_ranked_probability_skill_score",
+            "fair_ranked_probability_skill_score",
+            "reference_river_discharge_lower_tercile",
+            "reference_river_discharge_upper_tercile",
+            "river_discharge",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "version",
         [
             "1",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2020",
+            "2021",
+            "2022",
+            "2023",
         ],
         multiple=True,
     )
@@ -115,22 +101,18 @@ class sis_hydrology_variables_derived_seasonal_forecast(Main):
     )
     def __init__(
         self,
-        variable,
-        variable,
-        variable,
         hydrological_model,
-        year,
         month,
+        variable,
         version,
+        year,
         format_,
     ):
         super().__init__(
-            variable=variable,
-            variable=variable,
-            variable=variable,
             hydrological_model=hydrological_model,
-            year=year,
             month=month,
+            variable=variable,
             version=version,
+            year=year,
             format_=format_,
         )

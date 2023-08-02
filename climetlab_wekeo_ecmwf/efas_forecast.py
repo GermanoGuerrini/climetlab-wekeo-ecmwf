@@ -23,63 +23,15 @@ class efas_forecast(Main):
     ]
 
     string_selects = [
-        "product_type",
         "soil_level",
-        "year",
+        "product_type",
         "month",
-        "day",
-        "time",
         "leadtime_hour",
+        "time",
+        "day",
+        "year",
     ]
 
-    @normalize(
-        "product_type",
-        [
-            "control_forecast",
-            "ensemble_perturbed_forecasts",
-            "high_resolution_forecast",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "soil_level",
-        [
-            "1",
-            "2",
-            "3",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "year",
-        [
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "month",
-        [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ],
-        multiple=True,
-    )
     @normalize(
         "day",
         [
@@ -114,14 +66,6 @@ class efas_forecast(Main):
             "29",
             "30",
             "31",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "time",
-        [
-            "00:00",
-            "12:00",
         ],
         multiple=True,
     )
@@ -193,6 +137,62 @@ class efas_forecast(Main):
         multiple=True,
     )
     @normalize(
+        "month",
+        [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "product_type",
+        [
+            "control_forecast",
+            "ensemble_perturbed_forecasts",
+            "high_resolution_forecast",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "soil_level",
+        [
+            "1",
+            "2",
+            "3",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "time",
+        [
+            "00:00",
+            "12:00",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "originating_centre",
         [
             "cosmo",
@@ -245,26 +245,26 @@ class efas_forecast(Main):
     )
     def __init__(
         self,
+        day,
+        leadtime_hour,
+        month,
         product_type,
         soil_level,
-        year,
-        month,
-        day,
         time,
-        leadtime_hour,
+        year,
         originating_centre,
         variable,
         model_levels,
         format_,
     ):
         super().__init__(
+            day=day,
+            leadtime_hour=leadtime_hour,
+            month=month,
             product_type=product_type,
             soil_level=soil_level,
-            year=year,
-            month=month,
-            day=day,
             time=time,
-            leadtime_hour=leadtime_hour,
+            year=year,
             originating_centre=originating_centre,
             variable=variable,
             model_levels=model_levels,
