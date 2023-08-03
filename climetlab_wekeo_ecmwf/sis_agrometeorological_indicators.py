@@ -21,11 +21,11 @@ class sis_agrometeorological_indicators(Main):
     ]
 
     string_selects = [
-        "month",
-        "statistic",
         "time",
-        "day",
         "year",
+        "month",
+        "day",
+        "statistic",
     ]
 
     @normalize(

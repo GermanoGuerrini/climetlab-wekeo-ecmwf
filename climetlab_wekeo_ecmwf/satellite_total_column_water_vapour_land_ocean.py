@@ -22,8 +22,8 @@ class satellite_total_column_water_vapour_land_ocean(Main):
     ]
 
     string_selects = [
-        "month",
         "year",
+        "month",
     ]
 
     @normalize(
@@ -69,16 +69,16 @@ class satellite_total_column_water_vapour_land_ocean(Main):
         ],
     )
     @normalize(
-        "variable",
-        [
-            "all",
-        ],
-    )
-    @normalize(
         "format_",
         [
             "tgz",
             "zip",
+        ],
+    )
+    @normalize(
+        "variable",
+        [
+            "all",
         ],
     )
     def __init__(
@@ -86,13 +86,13 @@ class satellite_total_column_water_vapour_land_ocean(Main):
         month,
         year,
         horizontal_aggregation,
-        variable="all",
         format_,
+        variable="all",
     ):
         super().__init__(
             month=month,
             year=year,
             horizontal_aggregation=horizontal_aggregation,
-            variable=variable,
             format_=format_,
+            variable=variable,
         )

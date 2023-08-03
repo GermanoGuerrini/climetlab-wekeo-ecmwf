@@ -20,13 +20,13 @@ class cams_global_reanalysis_eac4_monthly(Main):
     ]
 
     string_selects = [
-        "product_type",
-        "month",
-        "variable",
         "time",
-        "pressure_level",
-        "year",
+        "product_type",
+        "variable",
         "model_level",
+        "year",
+        "pressure_level",
+        "month",
     ]
 
     @normalize(

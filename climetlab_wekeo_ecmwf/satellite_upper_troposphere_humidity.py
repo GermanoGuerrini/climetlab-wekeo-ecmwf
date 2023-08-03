@@ -22,8 +22,8 @@ class satellite_upper_troposphere_humidity(Main):
     ]
 
     string_selects = [
-        "month",
         "year",
+        "month",
         "day",
     ]
 
@@ -125,16 +125,16 @@ class satellite_upper_troposphere_humidity(Main):
         ],
     )
     @normalize(
-        "variable",
-        [
-            "all",
-        ],
-    )
-    @normalize(
         "format_",
         [
             "tgz",
             "zip",
+        ],
+    )
+    @normalize(
+        "variable",
+        [
+            "all",
         ],
     )
     @normalize("area", "bounding-box(list)")
@@ -144,8 +144,8 @@ class satellite_upper_troposphere_humidity(Main):
         month,
         year,
         sensor_on_satellite,
-        variable="all",
         format_,
+        variable="all",
         area=None,
     ):
         super().__init__(
@@ -153,7 +153,7 @@ class satellite_upper_troposphere_humidity(Main):
             month=month,
             year=year,
             sensor_on_satellite=sensor_on_satellite,
-            variable=variable,
             format_=format_,
+            variable=variable,
             area=area,
         )

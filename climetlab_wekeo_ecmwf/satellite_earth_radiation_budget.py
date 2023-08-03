@@ -21,9 +21,9 @@ class satellite_earth_radiation_budget(Main):
     ]
 
     string_selects = [
-        "month",
-        "year",
         "sensor",
+        "year",
+        "month",
         "variable",
     ]
 

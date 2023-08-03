@@ -23,10 +23,10 @@ class satellite_sea_ice_edge_type(Main):
     ]
 
     string_selects = [
-        "month",
         "year",
-        "variable",
+        "month",
         "day",
+        "variable",
     ]
 
     @normalize(

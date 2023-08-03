@@ -20,9 +20,9 @@ class cams_global_emission_inventories(Main):
     ]
 
     string_selects = [
-        "version",
-        "source",
         "year",
+        "source",
+        "version",
         "variable",
     ]
 

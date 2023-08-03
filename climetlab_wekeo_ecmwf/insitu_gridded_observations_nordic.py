@@ -22,11 +22,11 @@ class insitu_gridded_observations_nordic(Main):
 
     string_selects = [
         "product_type",
-        "month",
         "variable",
-        "spatial_interpolation_method",
-        "day",
         "year",
+        "spatial_interpolation_method",
+        "month",
+        "day",
     ]
 
     @normalize(

@@ -20,14 +20,14 @@ class sis_biodiversity_cmip5_regional(Main):
     ]
 
     string_selects = [
-        "derived_variable",
-        "statistic",
         "variable",
         "version",
+        "experiment",
+        "derived_variable",
         "ensemble_member",
         "region",
+        "statistic",
         "model",
-        "experiment",
     ]
 
     @normalize(

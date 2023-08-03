@@ -23,9 +23,9 @@ class sis_shipping_consumption_on_routes(Main):
     ]
 
     string_selects = [
+        "statistic",
         "forecast_start_month",
         "year",
-        "statistic",
         "variable",
     ]
 

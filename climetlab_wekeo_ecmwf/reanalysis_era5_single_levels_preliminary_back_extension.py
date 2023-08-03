@@ -20,12 +20,12 @@ class reanalysis_era5_single_levels_preliminary_back_extension(Main):
     ]
 
     string_selects = [
-        "product_type",
-        "month",
-        "variable",
         "time",
-        "day",
+        "product_type",
+        "variable",
         "year",
+        "month",
+        "day",
     ]
 
     @normalize(

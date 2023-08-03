@@ -25,10 +25,10 @@ class sis_hydrology_variables_derived_projections(Main):
     ]
 
     string_selects = [
-        "period",
         "variable",
-        "ensemble_member",
         "experiment",
+        "period",
+        "ensemble_member",
         "hydrological_model",
     ]
 

@@ -23,8 +23,8 @@ class reanalysis_era5_land(Main):
 
     string_selects = [
         "time",
-        "variable",
         "day",
+        "variable",
     ]
 
     @normalize(

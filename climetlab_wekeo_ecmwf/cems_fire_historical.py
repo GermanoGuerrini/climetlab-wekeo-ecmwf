@@ -21,12 +21,12 @@ class cems_fire_historical(Main):
 
     string_selects = [
         "product_type",
-        "month",
-        "dataset",
         "variable",
         "version",
-        "day",
         "year",
+        "month",
+        "day",
+        "dataset",
     ]
 
     @normalize(

@@ -22,8 +22,8 @@ class sis_urban_climate_cities(Main):
 
     string_selects = [
         "month",
-        "city",
         "year",
+        "city",
     ]
 
     @normalize(

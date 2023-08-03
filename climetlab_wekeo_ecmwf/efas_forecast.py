@@ -23,13 +23,13 @@ class efas_forecast(Main):
     ]
 
     string_selects = [
-        "soil_level",
-        "product_type",
-        "month",
-        "leadtime_hour",
         "time",
-        "day",
+        "product_type",
+        "leadtime_hour",
         "year",
+        "soil_level",
+        "month",
+        "day",
     ]
 
     @normalize(

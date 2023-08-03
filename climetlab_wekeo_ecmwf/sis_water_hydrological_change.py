@@ -21,9 +21,9 @@ class sis_water_hydrological_change(Main):
     ]
 
     string_selects = [
-        "time_aggregation",
         "gcm_model",
         "variable",
+        "time_aggregation",
         "experiment",
         "hydrological_model",
     ]

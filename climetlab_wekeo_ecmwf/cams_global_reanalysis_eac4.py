@@ -21,9 +21,9 @@ class cams_global_reanalysis_eac4(Main):
 
     string_selects = [
         "model_level",
+        "time",
         "pressure_level",
         "variable",
-        "time",
     ]
 
     @normalize(
@@ -209,8 +209,6 @@ class cams_global_reanalysis_eac4(Main):
         ],
     )
     @normalize("area", "bounding-box(list)")
-    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
-    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     @normalize(
         "model_level",
         [
@@ -308,24 +306,26 @@ class cams_global_reanalysis_eac4(Main):
         ],
         multiple=True,
     )
+    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
+    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     def __init__(
         self,
         time,
         variable,
         format_,
         area=None,
-        start="2003-01-01",
-        end="2022-12-31",
         model_level=None,
         pressure_level=None,
+        start="2003-01-01",
+        end="2022-12-31",
     ):
         super().__init__(
             time=time,
             variable=variable,
             format_=format_,
             area=area,
-            start=start,
-            end=end,
             model_level=model_level,
             pressure_level=pressure_level,
+            start=start,
+            end=end,
         )

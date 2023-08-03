@@ -23,10 +23,10 @@ class seasonal_postprocessed_single_levels(Main):
 
     string_selects = [
         "product_type",
-        "month",
         "variable",
         "leadtime_month",
         "year",
+        "month",
     ]
 
     @normalize(

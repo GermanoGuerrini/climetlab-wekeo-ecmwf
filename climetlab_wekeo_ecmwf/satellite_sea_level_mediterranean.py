@@ -21,8 +21,8 @@ class satellite_sea_level_mediterranean(Main):
     ]
 
     string_selects = [
-        "month",
         "year",
+        "month",
         "day",
     ]
 
@@ -116,16 +116,16 @@ class satellite_sea_level_mediterranean(Main):
         multiple=True,
     )
     @normalize(
-        "variable",
-        [
-            "all",
-        ],
-    )
-    @normalize(
         "format_",
         [
             "tgz",
             "zip",
+        ],
+    )
+    @normalize(
+        "variable",
+        [
+            "all",
         ],
     )
     def __init__(
@@ -133,13 +133,13 @@ class satellite_sea_level_mediterranean(Main):
         day,
         month,
         year,
-        variable="all",
         format_,
+        variable="all",
     ):
         super().__init__(
             day=day,
             month=month,
             year=year,
-            variable=variable,
             format_=format_,
+            variable=variable,
         )

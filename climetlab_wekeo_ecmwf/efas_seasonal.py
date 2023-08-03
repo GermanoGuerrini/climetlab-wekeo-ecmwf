@@ -22,10 +22,10 @@ class efas_seasonal(Main):
     ]
 
     string_selects = [
-        "leadtime_hour",
-        "month",
-        "year",
         "soil_level",
+        "leadtime_hour",
+        "year",
+        "month",
     ]
 
     @normalize(

@@ -22,9 +22,9 @@ class cems_glofas_seasonal(Main):
     string_selects = [
         "system_version",
         "leadtime_hour",
-        "month",
         "variable",
         "year",
+        "month",
         "hydrological_model",
     ]
 

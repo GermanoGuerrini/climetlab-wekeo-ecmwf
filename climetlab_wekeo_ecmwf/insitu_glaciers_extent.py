@@ -33,26 +33,26 @@ class insitu_glaciers_extent(Main):
         multiple=True,
     )
     @normalize(
-        "variable",
-        [
-            "all",
-        ],
-    )
-    @normalize(
         "format_",
         [
             "tgz",
             "zip",
         ],
     )
+    @normalize(
+        "variable",
+        [
+            "all",
+        ],
+    )
     def __init__(
         self,
         version,
-        variable="all",
         format_,
+        variable="all",
     ):
         super().__init__(
             version=version,
-            variable=variable,
             format_=format_,
+            variable=variable,
         )

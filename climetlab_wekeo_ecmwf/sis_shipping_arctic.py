@@ -21,8 +21,8 @@ class sis_shipping_arctic(Main):
     ]
 
     string_selects = [
-        "variable",
         "experiment",
+        "variable",
     ]
 
     @normalize(

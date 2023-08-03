@@ -20,11 +20,11 @@ class cems_glofas_historical(Main):
     ]
 
     string_selects = [
-        "system_version",
-        "hday",
         "product_type",
-        "variable",
+        "system_version",
         "hyear",
+        "variable",
+        "hday",
         "hmonth",
         "hydrological_model",
     ]

@@ -21,8 +21,8 @@ class insitu_glaciers_elevation_mass(Main):
     ]
 
     string_selects = [
-        "product_type",
         "file_version",
+        "product_type",
     ]
 
     @normalize(
@@ -46,28 +46,28 @@ class insitu_glaciers_elevation_mass(Main):
         multiple=True,
     )
     @normalize(
-        "variable",
-        [
-            "all",
-        ],
-    )
-    @normalize(
         "format_",
         [
             "tgz",
             "zip",
         ],
     )
+    @normalize(
+        "variable",
+        [
+            "all",
+        ],
+    )
     def __init__(
         self,
         file_version,
         product_type,
-        variable="all",
         format_,
+        variable="all",
     ):
         super().__init__(
             file_version=file_version,
             product_type=product_type,
-            variable=variable,
             format_=format_,
+            variable=variable,
         )

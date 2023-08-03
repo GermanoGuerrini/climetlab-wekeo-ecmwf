@@ -58,31 +58,31 @@ class cams_solar_radiation_timeseries(Main):
             "netcdf",
         ],
     )
-    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
-    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     @normalize("latitude")
     @normalize("longitude")
     @normalize("altitude")
+    @normalize("start", "date(%Y-%m-%dT%H:%M:%SZ)")
+    @normalize("end", "date(%Y-%m-%dT%H:%M:%SZ)")
     def __init__(
         self,
         sky_type,
         time_step,
         time_reference,
         format_,
-        start="2004-01-01",
-        end="2023-07-31",
         latitude=None,
         longitude=None,
         altitude=None,
+        start="2004-01-01",
+        end="2023-08-01",
     ):
         super().__init__(
             sky_type=sky_type,
             time_step=time_step,
             time_reference=time_reference,
             format_=format_,
-            start=start,
-            end=end,
             latitude=latitude,
             longitude=longitude,
             altitude=altitude,
+            start=start,
+            end=end,
         )

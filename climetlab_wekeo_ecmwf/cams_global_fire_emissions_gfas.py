@@ -91,7 +91,7 @@ class cams_global_fire_emissions_gfas(Main):
         variable,
         format_,
         start="2003-01-01",
-        end="2023-08-01",
+        end="2023-08-02",
     ):
         super().__init__(
             variable=variable,

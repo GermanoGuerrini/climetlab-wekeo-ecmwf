@@ -22,8 +22,8 @@ class sis_heat_and_cold_spells(Main):
 
     string_selects = [
         "ensemble_statistic",
-        "variable",
         "experiment",
+        "variable",
     ]
 
     @normalize(

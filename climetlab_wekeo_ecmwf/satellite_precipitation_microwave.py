@@ -22,9 +22,9 @@ class satellite_precipitation_microwave(Main):
     ]
 
     string_selects = [
-        "month",
-        "year",
         "version",
+        "year",
+        "month",
         "day",
     ]
 
@@ -122,16 +122,16 @@ class satellite_precipitation_microwave(Main):
         ],
     )
     @normalize(
-        "variable",
-        [
-            "all",
-        ],
-    )
-    @normalize(
         "format_",
         [
             "tgz",
             "zip",
+        ],
+    )
+    @normalize(
+        "variable",
+        [
+            "all",
         ],
     )
     def __init__(
@@ -141,8 +141,8 @@ class satellite_precipitation_microwave(Main):
         version,
         year,
         time_aggregation,
-        variable="all",
         format_,
+        variable="all",
     ):
         super().__init__(
             day=day,
@@ -150,6 +150,6 @@ class satellite_precipitation_microwave(Main):
             version=version,
             year=year,
             time_aggregation=time_aggregation,
-            variable=variable,
             format_=format_,
+            variable=variable,
         )

@@ -20,13 +20,13 @@ class cems_glofas_reforecast(Main):
     ]
 
     string_selects = [
-        "system_version",
-        "hday",
         "product_type",
-        "variable",
-        "hyear",
-        "hmonth",
+        "system_version",
         "leadtime_hour",
+        "hyear",
+        "variable",
+        "hday",
+        "hmonth",
         "hydrological_model",
     ]
 

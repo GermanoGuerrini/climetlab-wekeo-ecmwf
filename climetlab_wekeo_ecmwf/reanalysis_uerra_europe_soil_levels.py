@@ -22,11 +22,11 @@ class reanalysis_uerra_europe_soil_levels(Main):
     ]
 
     string_selects = [
+        "time",
+        "year",
         "soil_level",
         "month",
-        "time",
         "day",
-        "year",
     ]
 
     @normalize(

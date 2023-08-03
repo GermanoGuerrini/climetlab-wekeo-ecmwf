@@ -25,8 +25,8 @@ class cams_global_greenhouse_gas_inversion(Main):
     ]
 
     string_selects = [
-        "month",
         "year",
+        "month",
     ]
 
     @normalize(

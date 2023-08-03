@@ -21,11 +21,11 @@ class sis_biodiversity_era5_regional(Main):
     ]
 
     string_selects = [
-        "derived_variable",
-        "statistic",
         "variable",
-        "version",
+        "derived_variable",
         "region",
+        "statistic",
+        "version",
     ]
 
     @normalize(

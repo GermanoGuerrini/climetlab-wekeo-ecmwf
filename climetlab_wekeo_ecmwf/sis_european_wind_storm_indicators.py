@@ -22,11 +22,11 @@ class sis_european_wind_storm_indicators(Main):
 
     string_selects = [
         "time_aggregation",
-        "product",
-        "month",
-        "spatial_aggregation",
-        "day",
         "year",
+        "month",
+        "day",
+        "product",
+        "spatial_aggregation",
     ]
 
     @normalize(
@@ -176,16 +176,16 @@ class sis_european_wind_storm_indicators(Main):
         multiple=True,
     )
     @normalize(
-        "variable",
-        [
-            "all",
-        ],
-    )
-    @normalize(
         "format_",
         [
             "tgz",
             "zip",
+        ],
+    )
+    @normalize(
+        "variable",
+        [
+            "all",
         ],
     )
     def __init__(
@@ -196,8 +196,8 @@ class sis_european_wind_storm_indicators(Main):
         spatial_aggregation,
         time_aggregation,
         year,
-        variable="all",
         format_,
+        variable="all",
     ):
         super().__init__(
             day=day,
@@ -206,6 +206,6 @@ class sis_european_wind_storm_indicators(Main):
             spatial_aggregation=spatial_aggregation,
             time_aggregation=time_aggregation,
             year=year,
-            variable=variable,
             format_=format_,
+            variable=variable,
         )

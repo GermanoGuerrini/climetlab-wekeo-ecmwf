@@ -21,8 +21,8 @@ class sis_health_vector(Main):
 
     string_selects = [
         "ensemble_statistic",
-        "variable",
         "experiment",
+        "variable",
     ]
 
     @normalize(

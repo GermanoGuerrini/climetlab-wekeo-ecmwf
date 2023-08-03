@@ -20,12 +20,12 @@ class cams_europe_air_quality_reanalyses(Main):
     ]
 
     string_selects = [
-        "month",
+        "level",
+        "variable",
         "year",
         "type",
-        "variable",
+        "month",
         "model",
-        "level",
     ]
 
     @normalize(

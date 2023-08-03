@@ -23,11 +23,11 @@ class efas_historical(Main):
     ]
 
     string_selects = [
-        "hday",
-        "soil_level",
         "time",
+        "hday",
         "hyear",
         "hmonth",
+        "soil_level",
     ]
 
     @normalize(
@@ -150,6 +150,7 @@ class efas_historical(Main):
             "version_3_0",
             "version_3_5",
             "version_4_0",
+            "version_5_0",
         ],
     )
     @normalize(

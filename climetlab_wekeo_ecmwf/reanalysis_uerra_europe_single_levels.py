@@ -22,9 +22,9 @@ class reanalysis_uerra_europe_single_levels(Main):
     ]
 
     string_selects = [
-        "month",
-        "year",
         "time",
+        "year",
+        "month",
         "day",
     ]
 

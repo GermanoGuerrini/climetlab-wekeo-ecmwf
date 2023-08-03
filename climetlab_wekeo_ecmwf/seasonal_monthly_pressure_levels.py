@@ -23,11 +23,11 @@ class seasonal_monthly_pressure_levels(Main):
 
     string_selects = [
         "product_type",
-        "month",
         "variable",
-        "pressure_level",
         "leadtime_month",
         "year",
+        "pressure_level",
+        "month",
     ]
 
     @normalize(

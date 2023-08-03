@@ -20,12 +20,12 @@ class cams_global_ghg_reanalysis_egg4_monthly(Main):
     ]
 
     string_selects = [
-        "product_type",
-        "month",
-        "variable",
         "time",
-        "pressure_level",
+        "product_type",
+        "variable",
         "year",
+        "pressure_level",
+        "month",
         "step",
     ]
 

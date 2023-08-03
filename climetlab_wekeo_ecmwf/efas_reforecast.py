@@ -22,12 +22,12 @@ class efas_reforecast(Main):
     ]
 
     string_selects = [
-        "hday",
-        "soil_level",
         "product_type",
+        "leadtime_hour",
+        "hday",
         "hyear",
         "hmonth",
-        "leadtime_hour",
+        "soil_level",
     ]
 
     @normalize(
