@@ -39,6 +39,14 @@ class Main(Dataset):
             "datasetId": f"{self.dataset}",
         }
 
+        start = kwargs.get("start")
+        end = kwargs.get("end")
+
+        if start is not None and end is not None:
+            query["dateRangeSelectValues"] = [
+                {"name": "date", "start": f"{start}", "end": f"{end}"}
+            ]
+
         choices = dict(zip(self.choices, [kwargs[c] for c in self.choices]))
         if any(c is not None for c in choices.values()):
             query["stringChoiceValues"] = []
