@@ -93,7 +93,7 @@ class Main(Dataset):
             for input in inputs:
                 if inputs.get(input) is not None:
                     query["stringInputValues"].append(
-                        {"name": input, "value": inputs[input]}
+                        {"name": input, "value": f"{inputs[input]}"}
                     )
 
         self.source = cml.load_source("wekeo", query)
