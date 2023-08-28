@@ -37,6 +37,9 @@ class Main(Dataset):
         "xarray_open_dataset_kwargs": {"chunks": "auto", "engine": "netcdf4"}
     }
 
+    string_selects = []
+    inputs = []
+
     def __init__(self, *args, **kwargs):
 
         query = {
@@ -81,6 +84,16 @@ class Main(Dataset):
 
                     query["multiStringSelectValues"].append(
                         {"name": label, "value": string_selects[variable]}
+                    )
+
+        inputs = dict(zip(self.inputs, [kwargs[i] for i in self.inputs]))
+        if any(c is not None for c in inputs.values()):
+            query["stringInputValues"] = []
+
+            for input in inputs:
+                if inputs.get(input) is not None:
+                    query["stringInputValues"].append(
+                        {"name": input, "value": inputs[input]}
                     )
 
         self.source = cml.load_source("wekeo", query)
