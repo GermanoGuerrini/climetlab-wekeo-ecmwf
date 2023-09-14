@@ -20,10 +20,10 @@ class cams_global_emission_inventories(Main):
     ]
 
     string_selects = [
-        "year",
         "source",
-        "version",
         "variable",
+        "version",
+        "year",
     ]
 
     @normalize(

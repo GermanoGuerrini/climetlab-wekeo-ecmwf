@@ -25,11 +25,11 @@ class satellite_surface_radiation_budget(Main):
     ]
 
     string_selects = [
-        "variable",
-        "sensor_on_satellite",
-        "year",
-        "month",
         "day",
+        "month",
+        "sensor_on_satellite",
+        "variable",
+        "year",
     ]
 
     @normalize(

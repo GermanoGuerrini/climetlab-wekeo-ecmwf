@@ -7,12 +7,23 @@
 # nor does it submit to any jurisdiction.
 from __future__ import annotations
 
+from enum import Enum
+
 import xarray as xr
 
 import climetlab as cml
 from climetlab import Dataset
 
 __version__ = "0.1.0"
+
+
+class CombineStrategy(Enum):
+    MERGE = 1
+    CONCAT = 2
+
+
+class MergeError(Exception):
+    pass
 
 
 class Main(Dataset):
@@ -99,14 +110,6 @@ class Main(Dataset):
         self.source = cml.load_source("wekeo", query)
         self._xarray = None
 
-    def pre_concat(self, datasets):
-        """Hook for subclasses."""
-        return datasets
-
-    def post_concat(self, datasets, array):
-        """Hook for subclasses."""
-        return array
-
     def to_xarray(self, **kwargs):
         if self._xarray is not None:
             return self._xarray
@@ -119,9 +122,30 @@ class Main(Dataset):
             datasets = [
                 xr.open_dataset(s, **options) for s in self.source.sources
             ]
-            datasets = self.pre_concat(datasets)
-            array = xr.concat(datasets, dim="time")
-            array = self.post_concat(datasets, array)
+
+            strategy = CombineStrategy.MERGE
+            if len(datasets) > 1:
+                current = datasets[0]
+                for dataset in datasets[1:]:
+                    if not dataset.time.equals(current.time):
+                        # If times are all different, try to concat
+                        # along that dimension
+                        strategy = CombineStrategy.CONCAT
+                        break
+                    else:
+                        current = dataset
+
+            if strategy == CombineStrategy.MERGE:
+                try:
+                    array = xr.merge(datasets)
+                except xr.MergeError as exc:
+                    err = f"Cannot safely merge your data.\n" \
+                          f"Try to download a single variable or loop over the files and call `to_xarray` on each one.\n" \
+                          f"Original exception: {exc}"
+                    raise MergeError(err)
+            else:
+                array = xr.concat(datasets, dim="time")
+
             self._xarray = array
             return self._xarray
         except AttributeError:

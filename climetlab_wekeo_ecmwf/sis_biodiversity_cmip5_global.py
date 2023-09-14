@@ -20,14 +20,14 @@ class sis_biodiversity_cmip5_global(Main):
     ]
 
     string_selects = [
+        "derived_variable",
+        "ensemble_member",
+        "experiment",
+        "model",
+        "statistic",
+        "temporal_aggregation",
         "variable",
         "version",
-        "experiment",
-        "derived_variable",
-        "temporal_aggregation",
-        "ensemble_member",
-        "statistic",
-        "model",
     ]
 
     @normalize(

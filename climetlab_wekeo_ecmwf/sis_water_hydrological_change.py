@@ -21,11 +21,11 @@ class sis_water_hydrological_change(Main):
     ]
 
     string_selects = [
-        "gcm_model",
-        "variable",
-        "time_aggregation",
         "experiment",
+        "gcm_model",
         "hydrological_model",
+        "time_aggregation",
+        "variable",
     ]
 
     @normalize(

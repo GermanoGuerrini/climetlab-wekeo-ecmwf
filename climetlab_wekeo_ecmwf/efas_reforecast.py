@@ -22,11 +22,11 @@ class efas_reforecast(Main):
     ]
 
     string_selects = [
-        "product_type",
-        "leadtime_hour",
         "hday",
-        "hyear",
         "hmonth",
+        "hyear",
+        "leadtime_hour",
+        "product_type",
         "soil_level",
     ]
 

@@ -73,7 +73,7 @@ class cams_solar_radiation_timeseries(Main):
         longitude=None,
         altitude=None,
         start="2004-01-01",
-        end="2023-08-01",
+        end="2023-09-10",
     ):
         super().__init__(
             sky_type=sky_type,

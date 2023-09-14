@@ -25,8 +25,8 @@ class cams_global_greenhouse_gas_inversion(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
+        "year",
     ]
 
     @normalize(
@@ -94,6 +94,7 @@ class cams_global_greenhouse_gas_inversion(Main):
             "2020",
             "2021",
             "2022",
+            "2023",
         ],
         multiple=True,
     )
@@ -147,6 +148,7 @@ class cams_global_greenhouse_gas_inversion(Main):
             "v21r1",
             "v21r2",
             "v22r1",
+            "v23r1",
         ],
     )
     @normalize(

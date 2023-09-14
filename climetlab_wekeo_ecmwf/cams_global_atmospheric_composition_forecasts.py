@@ -20,12 +20,12 @@ class cams_global_atmospheric_composition_forecasts(Main):
     ]
 
     string_selects = [
-        "time",
         "leadtime_hour",
-        "variable",
         "model_level",
-        "type",
         "pressure_level",
+        "time",
+        "type",
+        "variable",
     ]
 
     @normalize(
@@ -869,7 +869,7 @@ class cams_global_atmospheric_composition_forecasts(Main):
         model_level=None,
         pressure_level=None,
         start="2015-01-01",
-        end="2023-08-03",
+        end="2023-09-12",
     ):
         super().__init__(
             leadtime_hour=leadtime_hour,

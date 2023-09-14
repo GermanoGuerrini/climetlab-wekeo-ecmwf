@@ -20,12 +20,12 @@ class cams_europe_air_quality_forecasts(Main):
     ]
 
     string_selects = [
-        "time",
         "leadtime_hour",
         "level",
-        "variable",
-        "type",
         "model",
+        "time",
+        "type",
+        "variable",
     ]
 
     @normalize(
@@ -252,8 +252,8 @@ class cams_europe_air_quality_forecasts(Main):
         variable,
         format_,
         area=None,
-        start="2020-07-30",
-        end="2023-08-03",
+        start="2020-09-08",
+        end="2023-09-12",
     ):
         super().__init__(
             leadtime_hour=leadtime_hour,

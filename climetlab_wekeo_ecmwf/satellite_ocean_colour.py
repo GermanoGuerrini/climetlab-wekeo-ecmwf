@@ -11,23 +11,21 @@ from climetlab.decorators import normalize
 from climetlab_wekeo_ecmwf.main import Main
 
 
-class cems_glofas_forecast(Main):
-    name = "EO:ECMWF:DAT:CEMS_GLOFAS_FORECAST"
-    dataset = "EO:ECMWF:DAT:CEMS_GLOFAS_FORECAST"
+class satellite_ocean_colour(Main):
+    name = "EO:ECMWF:DAT:SATELLITE_OCEAN_COLOUR"
+    dataset = "EO:ECMWF:DAT:SATELLITE_OCEAN_COLOUR"
 
     choices = [
+        "projection",
+        "version",
         "format_",
     ]
 
     string_selects = [
-        "product_type",
-        "system_version",
-        "leadtime_hour",
+        "day",
+        "month",
         "variable",
         "year",
-        "month",
-        "day",
-        "hydrological_model",
     ]
 
     @normalize(
@@ -68,50 +66,6 @@ class cems_glofas_forecast(Main):
         multiple=True,
     )
     @normalize(
-        "hydrological_model",
-        [
-            "htessel_lisflood",
-            "lisflood",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "leadtime_hour",
-        [
-            "120",
-            "144",
-            "168",
-            "192",
-            "216",
-            "24",
-            "240",
-            "264",
-            "288",
-            "312",
-            "336",
-            "360",
-            "384",
-            "408",
-            "432",
-            "456",
-            "48",
-            "480",
-            "504",
-            "528",
-            "552",
-            "576",
-            "600",
-            "624",
-            "648",
-            "672",
-            "696",
-            "72",
-            "720",
-            "96",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "month",
         [
             "01",
@@ -130,32 +84,38 @@ class cems_glofas_forecast(Main):
         multiple=True,
     )
     @normalize(
-        "product_type",
-        [
-            "control_forecast",
-            "ensemble_perturbed_forecasts",
-        ],
-        multiple=True,
-    )
-    @normalize(
-        "system_version",
-        [
-            "operational",
-            "version_2_1",
-            "version_3_1",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "variable",
         [
-            "river_discharge_in_the_last_24_hours",
+            "mass_concentration_of_chlorophyll_a",
+            "remote_sensing_reflectance",
         ],
         multiple=True,
     )
     @normalize(
         "year",
         [
+            "1997",
+            "1998",
+            "1999",
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
             "2019",
             "2020",
             "2021",
@@ -165,35 +125,44 @@ class cems_glofas_forecast(Main):
         multiple=True,
     )
     @normalize(
-        "format_",
+        "projection",
         [
-            "grib",
-            "netcdf4.zip",
+            "regular_latitude_longitude_grid",
+            "sinusoidal_grid",
         ],
     )
-    @normalize("area", "bounding-box(list)")
+    @normalize(
+        "version",
+        [
+            "4_2",
+            "5_0",
+            "5_0_1",
+            "6_0",
+        ],
+    )
+    @normalize(
+        "format_",
+        [
+            "tgz",
+            "zip",
+        ],
+    )
     def __init__(
         self,
         day,
-        hydrological_model,
-        leadtime_hour,
         month,
-        product_type,
-        system_version,
         variable,
         year,
+        projection,
+        version,
         format_,
-        area=None,
     ):
         super().__init__(
             day=day,
-            hydrological_model=hydrological_model,
-            leadtime_hour=leadtime_hour,
             month=month,
-            product_type=product_type,
-            system_version=system_version,
             variable=variable,
             year=year,
+            projection=projection,
+            version=version,
             format_=format_,
-            area=area,
         )

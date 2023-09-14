@@ -22,10 +22,10 @@ class satellite_precipitation_microwave(Main):
     ]
 
     string_selects = [
+        "day",
+        "month",
         "version",
         "year",
-        "month",
-        "day",
     ]
 
     @normalize(

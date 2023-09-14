@@ -21,12 +21,12 @@ class sis_european_wind_storm_indicators(Main):
     ]
 
     string_selects = [
-        "time_aggregation",
-        "year",
-        "month",
         "day",
+        "month",
         "product",
         "spatial_aggregation",
+        "time_aggregation",
+        "year",
     ]
 
     @normalize(

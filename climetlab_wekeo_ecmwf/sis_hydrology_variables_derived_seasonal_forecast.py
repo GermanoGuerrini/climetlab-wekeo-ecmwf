@@ -20,11 +20,11 @@ class sis_hydrology_variables_derived_seasonal_forecast(Main):
     ]
 
     string_selects = [
-        "variable",
-        "year",
-        "month",
         "hydrological_model",
+        "month",
+        "variable",
         "version",
+        "year",
     ]
 
     @normalize(

@@ -21,9 +21,9 @@ class sis_european_wind_storm_synthetic_events(Main):
 
     string_selects = [
         "month",
-        "year",
-        "version_id",
         "variable",
+        "version_id",
+        "year",
     ]
 
     @normalize(

@@ -21,11 +21,11 @@ class cams_europe_air_quality_reanalyses(Main):
 
     string_selects = [
         "level",
+        "model",
+        "month",
+        "type",
         "variable",
         "year",
-        "type",
-        "month",
-        "model",
     ]
 
     @normalize(
@@ -111,6 +111,11 @@ class cams_europe_air_quality_reanalyses(Main):
     @normalize(
         "year",
         [
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
             "2018",
             "2019",
             "2020",

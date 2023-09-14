@@ -22,11 +22,11 @@ class satellite_carbon_dioxide(Main):
     ]
 
     string_selects = [
-        "year",
         "day",
         "month",
         "processing_level",
         "version",
+        "year",
     ]
 
     @normalize(

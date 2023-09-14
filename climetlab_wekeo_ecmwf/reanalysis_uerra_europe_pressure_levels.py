@@ -21,11 +21,11 @@ class reanalysis_uerra_europe_pressure_levels(Main):
     ]
 
     string_selects = [
+        "day",
+        "month",
+        "pressure_level",
         "time",
         "year",
-        "pressure_level",
-        "month",
-        "day",
     ]
 
     @normalize(

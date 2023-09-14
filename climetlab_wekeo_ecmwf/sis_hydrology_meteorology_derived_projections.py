@@ -26,11 +26,11 @@ class sis_hydrology_meteorology_derived_projections(Main):
     ]
 
     string_selects = [
-        "variable",
-        "time_aggregation",
+        "ensemble_member",
         "experiment",
         "period",
-        "ensemble_member",
+        "time_aggregation",
+        "variable",
     ]
 
     @normalize(

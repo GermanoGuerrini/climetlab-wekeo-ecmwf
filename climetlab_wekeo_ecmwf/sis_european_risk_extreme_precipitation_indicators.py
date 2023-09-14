@@ -20,14 +20,14 @@ class sis_european_risk_extreme_precipitation_indicators(Main):
     ]
 
     string_selects = [
-        "product_type",
         "city",
-        "variable",
-        "return_period",
-        "temporal_aggregation",
-        "period",
-        "spatial_coverage",
         "percentile",
+        "period",
+        "product_type",
+        "return_period",
+        "spatial_coverage",
+        "temporal_aggregation",
+        "variable",
     ]
 
     @normalize(

@@ -21,10 +21,10 @@ class satellite_sea_level_global(Main):
     ]
 
     string_selects = [
-        "year",
-        "month",
         "day",
+        "month",
         "variable",
+        "year",
     ]
 
     @normalize(

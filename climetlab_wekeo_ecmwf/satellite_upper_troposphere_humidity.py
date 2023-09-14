@@ -22,9 +22,9 @@ class satellite_upper_troposphere_humidity(Main):
     ]
 
     string_selects = [
-        "year",
-        "month",
         "day",
+        "month",
+        "year",
     ]
 
     @normalize(

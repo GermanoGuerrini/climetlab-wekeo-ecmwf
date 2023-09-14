@@ -21,9 +21,9 @@ class satellite_sea_level_black_sea(Main):
     ]
 
     string_selects = [
-        "year",
-        "month",
         "day",
+        "month",
+        "year",
     ]
 
     @normalize(

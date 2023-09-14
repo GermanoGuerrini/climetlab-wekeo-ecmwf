@@ -20,11 +20,11 @@ class reanalysis_era5_land_monthly_means(Main):
     ]
 
     string_selects = [
-        "time",
+        "month",
         "product_type",
+        "time",
         "variable",
         "year",
-        "month",
     ]
 
     @normalize(

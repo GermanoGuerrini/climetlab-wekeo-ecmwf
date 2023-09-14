@@ -24,8 +24,8 @@ class satellite_total_column_water_vapour_ocean(Main):
     ]
 
     string_selects = [
-        "year",
         "month",
+        "year",
     ]
 
     @normalize(

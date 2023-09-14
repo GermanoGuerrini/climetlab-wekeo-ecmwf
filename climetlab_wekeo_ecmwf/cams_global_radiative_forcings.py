@@ -21,13 +21,13 @@ class cams_global_radiative_forcings(Main):
     ]
 
     string_selects = [
-        "sky_type",
-        "level",
-        "variable",
-        "year",
-        "month",
         "band",
+        "level",
+        "month",
+        "sky_type",
+        "variable",
         "version",
+        "year",
     ]
 
     @normalize(

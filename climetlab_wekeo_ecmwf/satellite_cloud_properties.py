@@ -11,26 +11,28 @@ from climetlab.decorators import normalize
 from climetlab_wekeo_ecmwf.main import Main
 
 
-class cems_glofas_historical(Main):
-    name = "EO:ECMWF:DAT:CEMS_GLOFAS_HISTORICAL"
-    dataset = "EO:ECMWF:DAT:CEMS_GLOFAS_HISTORICAL"
+class satellite_cloud_properties(Main):
+    name = "EO:ECMWF:DAT:SATELLITE_CLOUD_PROPERTIES"
+    dataset = "EO:ECMWF:DAT:SATELLITE_CLOUD_PROPERTIES"
 
     choices = [
+        "product_family",
+        "origin",
+        "climate_data_record_type",
+        "time_aggregation",
         "format_",
     ]
 
     string_selects = [
-        "product_type",
-        "system_version",
-        "hyear",
+        "day",
+        "month",
+        "sensor_on_satellite",
         "variable",
-        "hday",
-        "hmonth",
-        "hydrological_model",
+        "year",
     ]
 
     @normalize(
-        "hday",
+        "day",
         [
             "01",
             "02",
@@ -67,37 +69,48 @@ class cems_glofas_historical(Main):
         multiple=True,
     )
     @normalize(
-        "hmonth",
+        "month",
         [
-            "april",
-            "august",
-            "december",
-            "february",
-            "january",
-            "july",
-            "june",
-            "march",
-            "may",
-            "november",
-            "october",
-            "september",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
         ],
         multiple=True,
     )
     @normalize(
-        "hydrological_model",
+        "sensor_on_satellite",
         [
-            "htessel_lisflood",
-            "lisflood",
+            "aatsr_on_envisat",
+            "atsr2_on_ers2",
+            "avhrr_on_multiple_satellites",
+            "slstr_on_sentinel_3a",
+            "slstr_on_sentinel_3b",
         ],
         multiple=True,
     )
     @normalize(
-        "hyear",
+        "variable",
         [
-            "1979",
-            "1980",
-            "1981",
+            "all_variables",
+            "cloud_fraction",
+            "cloud_physical_properties_of_the_ice_phase",
+            "cloud_physical_properties_of_the_liquid_phase",
+            "cloud_top_level",
+        ],
+        multiple=True,
+    )
+    @normalize(
+        "year",
+        [
             "1982",
             "1983",
             "1984",
@@ -138,63 +151,70 @@ class cems_glofas_historical(Main):
             "2019",
             "2020",
             "2021",
-            "2022",
-            "2023",
         ],
         multiple=True,
     )
     @normalize(
-        "product_type",
+        "product_family",
         [
-            "consolidated",
-            "intermediate",
+            "cci",
+            "clara",
         ],
-        multiple=True,
     )
     @normalize(
-        "system_version",
+        "origin",
         [
-            "version_2_1",
-            "version_3_1",
-            "version_4_0",
+            "c3s",
+            "esa",
+            "eumetsat",
         ],
-        multiple=True,
     )
     @normalize(
-        "variable",
+        "climate_data_record_type",
         [
-            "river_discharge_in_the_last_24_hours",
+            "interim_climate_data_record",
+            "thematic_climate_data_record",
         ],
-        multiple=True,
+    )
+    @normalize(
+        "time_aggregation",
+        [
+            "daily_mean",
+            "monthly_mean",
+        ],
     )
     @normalize(
         "format_",
         [
-            "grib",
-            "netcdf4.zip",
+            "tgz",
+            "zip",
         ],
     )
     @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        hday,
-        hmonth,
-        hydrological_model,
-        hyear,
-        product_type,
-        system_version,
+        day,
+        month,
+        sensor_on_satellite,
         variable,
+        year,
+        product_family,
+        origin,
+        climate_data_record_type,
+        time_aggregation,
         format_,
         area=None,
     ):
         super().__init__(
-            hday=hday,
-            hmonth=hmonth,
-            hydrological_model=hydrological_model,
-            hyear=hyear,
-            product_type=product_type,
-            system_version=system_version,
+            day=day,
+            month=month,
+            sensor_on_satellite=sensor_on_satellite,
             variable=variable,
+            year=year,
+            product_family=product_family,
+            origin=origin,
+            climate_data_record_type=climate_data_record_type,
+            time_aggregation=time_aggregation,
             format_=format_,
             area=area,
         )

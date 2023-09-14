@@ -23,10 +23,10 @@ class sis_marine_properties(Main):
     ]
 
     string_selects = [
-        "year",
         "experiment",
         "month",
         "variable",
+        "year",
     ]
 
     @normalize(

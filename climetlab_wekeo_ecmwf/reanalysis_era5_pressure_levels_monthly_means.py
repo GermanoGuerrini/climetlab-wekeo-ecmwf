@@ -20,12 +20,12 @@ class reanalysis_era5_pressure_levels_monthly_means(Main):
     ]
 
     string_selects = [
-        "time",
+        "month",
+        "pressure_level",
         "product_type",
+        "time",
         "variable",
         "year",
-        "pressure_level",
-        "month",
     ]
 
     @normalize(

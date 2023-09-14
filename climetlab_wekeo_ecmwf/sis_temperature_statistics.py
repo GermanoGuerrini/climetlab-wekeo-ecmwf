@@ -23,8 +23,8 @@ class sis_temperature_statistics(Main):
 
     string_selects = [
         "ensemble_statistic",
-        "statistic",
         "experiment",
+        "statistic",
     ]
 
     @normalize(

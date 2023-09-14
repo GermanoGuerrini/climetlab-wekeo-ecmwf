@@ -21,8 +21,8 @@ class cams_global_reanalysis_eac4(Main):
 
     string_selects = [
         "model_level",
-        "time",
         "pressure_level",
+        "time",
         "variable",
     ]
 

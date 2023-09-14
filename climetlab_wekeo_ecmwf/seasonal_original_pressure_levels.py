@@ -22,12 +22,12 @@ class seasonal_original_pressure_levels(Main):
     ]
 
     string_selects = [
+        "day",
         "leadtime_hour",
+        "month",
+        "pressure_level",
         "variable",
         "year",
-        "pressure_level",
-        "month",
-        "day",
     ]
 
     @normalize(

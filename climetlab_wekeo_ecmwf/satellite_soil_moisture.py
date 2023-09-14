@@ -20,14 +20,14 @@ class satellite_soil_moisture(Main):
     ]
 
     string_selects = [
-        "variable",
-        "time_aggregation",
-        "version",
-        "year",
-        "month",
         "day",
+        "month",
+        "time_aggregation",
         "type_of_record",
         "type_of_sensor",
+        "variable",
+        "version",
+        "year",
     ]
 
     @normalize(

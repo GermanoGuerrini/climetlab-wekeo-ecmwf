@@ -21,11 +21,11 @@ class reanalysis_uerra_europe_height_levels(Main):
     ]
 
     string_selects = [
-        "time",
-        "year",
-        "month",
         "day",
         "height_level",
+        "month",
+        "time",
+        "year",
     ]
 
     @normalize(

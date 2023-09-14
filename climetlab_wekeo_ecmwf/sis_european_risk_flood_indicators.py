@@ -20,9 +20,9 @@ class sis_european_risk_flood_indicators(Main):
     ]
 
     string_selects = [
-        "return_period",
-        "dem",
         "city",
+        "dem",
+        "return_period",
         "variable",
     ]
 

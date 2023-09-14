@@ -22,11 +22,11 @@ class seasonal_original_single_levels(Main):
     ]
 
     string_selects = [
+        "day",
         "leadtime_hour",
+        "month",
         "variable",
         "year",
-        "month",
-        "day",
     ]
 
     @normalize(

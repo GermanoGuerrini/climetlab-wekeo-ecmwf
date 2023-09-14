@@ -21,9 +21,9 @@ class satellite_sea_level_mediterranean(Main):
     ]
 
     string_selects = [
-        "year",
-        "month",
         "day",
+        "month",
+        "year",
     ]
 
     @normalize(

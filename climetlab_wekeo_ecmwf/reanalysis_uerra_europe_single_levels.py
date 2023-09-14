@@ -22,10 +22,10 @@ class reanalysis_uerra_europe_single_levels(Main):
     ]
 
     string_selects = [
+        "day",
+        "month",
         "time",
         "year",
-        "month",
-        "day",
     ]
 
     @normalize(

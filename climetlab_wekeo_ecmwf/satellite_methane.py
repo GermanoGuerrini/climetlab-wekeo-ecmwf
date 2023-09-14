@@ -22,11 +22,11 @@ class satellite_methane(Main):
     ]
 
     string_selects = [
-        "year",
         "day",
         "month",
         "processing_level",
         "version",
+        "year",
     ]
 
     @normalize(

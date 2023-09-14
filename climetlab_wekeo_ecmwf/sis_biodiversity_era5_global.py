@@ -20,10 +20,10 @@ class sis_biodiversity_era5_global(Main):
     ]
 
     string_selects = [
-        "variable",
-        "temporal_aggregation",
         "derived_variable",
         "statistic",
+        "temporal_aggregation",
+        "variable",
         "version",
     ]
 
