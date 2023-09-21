@@ -11,32 +11,25 @@ from climetlab.decorators import normalize
 from climetlab_wekeo_ecmwf.main import Main
 
 
-class cems_fire_historical(Main):
-    name = "EO:ECMWF:DAT:CEMS_FIRE_HISTORICAL"
-    dataset = "EO:ECMWF:DAT:CEMS_FIRE_HISTORICAL"
+class cems_fire_historical_v1(Main):
+    name = "EO:ECMWF:DAT:CEMS_FIRE_HISTORICAL_V1"
+    dataset = "EO:ECMWF:DAT:CEMS_FIRE_HISTORICAL_V1"
 
     choices = [
-        "format_",
+        "product_type",
+        "dataset_type",
+        "grid",
     ]
 
     string_selects = [
-        "dataset",
         "day",
+        "format_",
         "month",
-        "product_type",
+        "system_version",
         "variable",
-        "version",
         "year",
     ]
 
-    @normalize(
-        "dataset",
-        [
-            "Consolidated dataset",
-            "Intermediate dataset",
-        ],
-        multiple=True,
-    )
     @normalize(
         "day",
         [
@@ -75,6 +68,14 @@ class cems_fire_historical(Main):
         multiple=True,
     )
     @normalize(
+        "format_",
+        [
+            "grib",
+            "netcdf",
+        ],
+        multiple=True,
+    )
+    @normalize(
         "month",
         [
             "01",
@@ -93,12 +94,9 @@ class cems_fire_historical(Main):
         multiple=True,
     )
     @normalize(
-        "product_type",
+        "system_version",
         [
-            "ensemble_mean",
-            "ensemble_members",
-            "ensemble_spread",
-            "reanalysis",
+            "4_1",
         ],
         multiple=True,
     )
@@ -107,8 +105,8 @@ class cems_fire_historical(Main):
         [
             "build_up_index",
             "burning_index",
-            "danger_risk",
             "drought_code",
+            "drought_factor",
             "duff_moisture_code",
             "energy_release_component",
             "fine_fuel_moisture_code",
@@ -123,17 +121,47 @@ class cems_fire_historical(Main):
         multiple=True,
     )
     @normalize(
-        "version",
-        [
-            "3.0",
-            "3.1",
-            "4.0",
-        ],
-        multiple=True,
-    )
-    @normalize(
         "year",
         [
+            "1940",
+            "1941",
+            "1942",
+            "1943",
+            "1944",
+            "1945",
+            "1946",
+            "1947",
+            "1948",
+            "1949",
+            "1950",
+            "1951",
+            "1952",
+            "1953",
+            "1954",
+            "1955",
+            "1956",
+            "1957",
+            "1958",
+            "1959",
+            "1960",
+            "1961",
+            "1962",
+            "1963",
+            "1964",
+            "1965",
+            "1966",
+            "1967",
+            "1968",
+            "1969",
+            "1970",
+            "1971",
+            "1972",
+            "1973",
+            "1974",
+            "1975",
+            "1976",
+            "1977",
+            "1978",
             "1979",
             "1980",
             "1981",
@@ -178,34 +206,55 @@ class cems_fire_historical(Main):
             "2020",
             "2021",
             "2022",
+            "2023",
         ],
         multiple=True,
     )
     @normalize(
-        "format_",
+        "product_type",
         [
-            "tgz",
-            "zip",
+            "ensemble_members",
+            "reanalysis",
         ],
     )
+    @normalize(
+        "dataset_type",
+        [
+            "consolidated_dataset",
+            "intermediate_dataset",
+        ],
+    )
+    @normalize(
+        "grid",
+        [
+            "0.25/0.25",
+            "0.5/0.5",
+            "original_grid",
+        ],
+    )
+    @normalize("area", "bounding-box(list)")
     def __init__(
         self,
-        dataset,
         day,
-        month,
-        product_type,
-        variable,
-        version,
-        year,
         format_,
+        month,
+        system_version,
+        variable,
+        year,
+        product_type,
+        dataset_type,
+        grid,
+        area=None,
     ):
         super().__init__(
-            dataset=dataset,
             day=day,
-            month=month,
-            product_type=product_type,
-            variable=variable,
-            version=version,
-            year=year,
             format_=format_,
+            month=month,
+            system_version=system_version,
+            variable=variable,
+            year=year,
+            product_type=product_type,
+            dataset_type=dataset_type,
+            grid=grid,
+            area=area,
         )

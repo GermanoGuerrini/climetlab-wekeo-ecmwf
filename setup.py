@@ -67,7 +67,7 @@ setuptools.setup(
             "wekeo-ecmwf-cams-global-reanalysis-eac4-monthly=climetlab_wekeo_ecmwf.cams_global_reanalysis_eac4_monthly:cams_global_reanalysis_eac4_monthly",
             "wekeo-ecmwf-cams-global-reanalysis-eac4=climetlab_wekeo_ecmwf.cams_global_reanalysis_eac4:cams_global_reanalysis_eac4",
             "wekeo-ecmwf-cams-solar-radiation-timeseries=climetlab_wekeo_ecmwf.cams_solar_radiation_timeseries:cams_solar_radiation_timeseries",
-            "wekeo-ecmwf-cems-fire-historical=climetlab_wekeo_ecmwf.cems_fire_historical:cems_fire_historical",
+            "wekeo-ecmwf-cems-fire-historical-v1=climetlab_wekeo_ecmwf.cems_fire_historical_v1:cems_fire_historical_v1",
             "wekeo-ecmwf-derived-near-surface-meteorological-variables=climetlab_wekeo_ecmwf.derived_near_surface_meteorological_variables:derived_near_surface_meteorological_variables",
             "wekeo-ecmwf-derived-reanalysis-energy-moisture-budget=climetlab_wekeo_ecmwf.derived_reanalysis_energy_moisture_budget:derived_reanalysis_energy_moisture_budget",
             "wekeo-ecmwf-derived-utci-historical=climetlab_wekeo_ecmwf.derived_utci_historical:derived_utci_historical",
