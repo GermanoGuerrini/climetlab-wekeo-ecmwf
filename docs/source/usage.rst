@@ -258,7 +258,7 @@ This brings the advantage that the user does not have to clean up the local disk
 
     When working with large datasets the files will fill up the computers cache, or the data cannot be fully downloaded if the queried volume does not fit fully in cache. 
 
-For large volumes of data it is recommended to change the default location where CliMetLab stores the data from cache to a large disk or obk´ject storage. 
+For large volumes of data it is recommended to change the default location where CliMetLab stores the data from cache to a large disk or object storage. 
 All benefits of the data management of CliMetLab remain, except the datasets are not deleted when the cache is cleared. They will be persistent on the drive instead. 
 
 .. code-block:: python 
