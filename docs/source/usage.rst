@@ -247,6 +247,63 @@ If the merges dataset should be displayed together with a basemap, the longitude
 .. image:: ../images/plot-baseline.png
     :width: 400
 
+Handling Merge errors
+---------------------
+
+The ``to_xarray`` function is not supported for all datasets depending of the datasets' shape and variable names. In such cases the following error will occur: 
+
+.. error:: 
+    MergeError: Cannot safely merge your data. Try to download a single variable or loop over the files and call `to_xarray` on each one.
+
+The ``ECMWF:SIS:WATER:HYDROLOGICAL:CHANGE`` dataset is one example:
+
+.. code-block:: python
+
+
+    ds=cml.load_dataset(
+    "wekeo-ecmwf-sis-water-hydrological-change",
+    variable=[
+        "air_temperature",
+        "precipitation"],
+    time_aggregation=["autumn", "spring"],
+    format_="zip",
+    gcm_model="esm_chem",
+    statistic="change_in_the_annual_mean",
+    experiment="rcp_8_5",
+    hydrological_model="pcr_globwb")
+
+    xarr.to_xarray()
+
+This raises the error:
+
+.. error::
+    MergeError: Cannot safely merge your data.
+    Try to download a single variable or loop over the files and call `to_xarray` on each one.
+    Original exception: conflicting values for variable 'ref_var_threshold' on objects to be combined. You can skip this check by specifying compat='override'.
+
+The original exception reveals that the datasets have identical variable names, which is why they cannot be merged to a single xarray. 
+
+The single datasets downloaded by CliMetÖab can be accessed by ``ds.source.sources``. In a loop each dataset can be converted to xarray separetely.
+
+.. code-block:: python
+    
+    import xarray as xr
+    datasets = [xr.open_dataset(s) for s in cmlds.source.sources]
+
+The datasets can be merged after manually changing theit variable names using xarray. 
+
+.. code-block:: python
+
+    datasets[0] = datasets[0].rename({"relative_change": "prec_relative_change"})
+    datasets[0] = datasets[0].rename({"ref_var_threshold": "prec_ref_var_threshold"})[['prec_relative_change', 'prec_ref_var_threshold']]
+
+    datasets[1] = datasets[1].rename({"absolute_change": "temp_absolute_change"})
+    datasets[1] = datasets[1].rename({"ref_var_threshold": "temp_ref_var_threshold"})[['temp_absolute_change', 'temp_ref_var_threshold']]
+
+    xarr = xr.merge(datasets)
+
+
+
 
 Caching and Storage of CliMetLab datasets
 -----------------------------------------
@@ -258,8 +315,8 @@ This brings the advantage that the user does not have to clean up the local disk
 
     When working with large datasets the files will fill up the computers cache, or the data cannot be fully downloaded if the queried volume does not fit fully in cache.
 
-For large volumes of data it is recommended to change the default location where CliMetLab stores the data from cache to a large disk or object storage.
-All benefits of the data management of CliMetLab remain, except the datasets are not deleted when the cache is cleared. They will be persistent on the drive instead.
+For large volumes of data it is recommended to change the default location where CliMetLab stores the data from cache to a large disk or object storage. 
+All benefits of the data management of CliMetLab remain, except the datasets are not deleted when the cache is cleared. They will be persistent on the drive instead. 
 
 .. code-block:: python
 
