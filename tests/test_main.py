@@ -11,7 +11,7 @@ import climetlab as cml
 
 
 def test_read():
-    with patch('climetlab.load_source'):
+    with patch("climetlab.load_source"):
         ds = cml.load_dataset(
             "wekeo-ecmwf-cams-europe-air-quality-forecasts",
             leadtime_hour="0",
