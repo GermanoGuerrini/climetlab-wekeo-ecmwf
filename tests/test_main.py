@@ -5,18 +5,25 @@
 # In applying this licence, ECMWF does not waive the privileges and immunities
 # granted to it by virtue of its status as an intergovernmental organisation
 # nor does it submit to any jurisdiction.
+from unittest.mock import patch
 
 import climetlab as cml
 
 
 def test_read():
-    ds = cml.load_dataset(
-        "climetlab-wekeo-ecmwf",
-        year="2021",
-        parameter="t2m",
-    )
-    xds = ds.to_xarray()
-    print(xds)
+    with patch('climetlab.load_source'):
+        ds = cml.load_dataset(
+            "wekeo-ecmwf-cams-europe-air-quality-forecasts",
+            leadtime_hour="0",
+            level="0",
+            model="chimere",
+            time="00:00",
+            type="analysis",
+            variable="alder_pollen",
+            format_="netcdf",
+        )
+        xds = ds.to_xarray()
+        print(xds)
 
 
 if __name__ == "__main__":
