@@ -286,12 +286,14 @@ The original exception reveals that the datasets have identical variable names, 
 The single datasets downloaded by CliMetÖab can be accessed by ``ds.source.sources``. In a loop each dataset can be converted to xarray separetely.
 
 .. code-block:: python
+    
     import xarray as xr
     datasets = [xr.open_dataset(s) for s in cmlds.source.sources]
 
 The datasets can be merged after manually changing theit variable names using xarray. 
 
 .. code-block:: python
+
     datasets[0] = datasets[0].rename({"relative_change": "prec_relative_change"})
     datasets[0] = datasets[0].rename({"ref_var_threshold": "prec_ref_var_threshold"})[['prec_relative_change', 'prec_ref_var_threshold']]
 
