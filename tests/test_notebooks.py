@@ -28,7 +28,6 @@ EXAMPLES = os.path.join(
 
 
 def notebooks_list():
-
     notebooks = []
     for path in os.listdir(EXAMPLES):
         # ignore notebooks starting with '_'

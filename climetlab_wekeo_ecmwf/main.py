@@ -9,9 +9,8 @@ from __future__ import annotations
 
 from enum import Enum
 
-import xarray as xr
-
 import climetlab as cml
+import xarray as xr
 from climetlab import Dataset
 
 __version__ = "0.1.0"
@@ -52,7 +51,6 @@ class Main(Dataset):
     inputs = []
 
     def __init__(self, *args, **kwargs):
-
         query = {
             "datasetId": f"{self.dataset}",
         }
@@ -71,7 +69,6 @@ class Main(Dataset):
 
             for choice in choices:
                 if choices.get(choice) is not None:
-
                     if choice == "format_":
                         label = "format"
                     else:
@@ -81,13 +78,14 @@ class Main(Dataset):
                         {"name": label, "value": choices[choice]}
                     )
 
-        string_selects = dict(zip(self.string_selects, [kwargs[v] for v in self.string_selects]))
+        string_selects = dict(
+            zip(self.string_selects, [kwargs[v] for v in self.string_selects])
+        )
         if any(v is not None for v in string_selects.values()):
             query["multiStringSelectValues"] = []
 
             for variable in string_selects:
                 if string_selects.get(variable) is not None:
-
                     if variable == "format_":
                         label = "format"
                     else:
@@ -119,9 +117,7 @@ class Main(Dataset):
         options.update(kwargs.get("xarray_open_dataset_kwargs", {}))
 
         try:
-            datasets = [
-                xr.open_dataset(s, **options) for s in self.source.sources
-            ]
+            datasets = [xr.open_dataset(s, **options) for s in self.source.sources]
 
             strategy = CombineStrategy.MERGE
             if len(datasets) > 1:
@@ -139,9 +135,11 @@ class Main(Dataset):
                 try:
                     array = xr.merge(datasets)
                 except xr.MergeError as exc:
-                    err = f"Cannot safely merge your data.\n" \
-                          f"Try to download a single variable or loop over the files and call `to_xarray` on each one.\n" \
-                          f"Original exception: {exc}"
+                    err = (
+                        f"Cannot safely merge your data.\n"
+                        f"Try to download a single variable or loop over the files and call `to_xarray` on each one.\n"
+                        f"Original exception: {exc}"
+                    )
                     raise MergeError(err)
             else:
                 array = xr.concat(datasets, dim="time")
