@@ -88,7 +88,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine sphinx
+        pip install setuptools wheel twine sphinx sphinx-rtd-theme
 
     - name: Check version
       run: |
