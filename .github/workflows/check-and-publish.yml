@@ -90,11 +90,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel twine sphinx sphinx-rtd-theme
 
-    - name: Check version
+    - name: Check that tag version matches code version
       run: |
-        release=${GITHUB_REF##*/}
-        version=$(python setup.py --version)
-        test "$release" == "$version"
+          tag=${GITHUB_REF#refs/tags/}
+          version=$(python setup.py --version)
+          echo 'tag='$tag
+          echo "version file="$version
+          test "$tag" == "$version"
 
     - name: Build pip package
       run: |
