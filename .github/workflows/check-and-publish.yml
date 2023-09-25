@@ -111,7 +111,7 @@ jobs:
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-      #run: |
+      run: |
         twine upload dist/* --verbose
     
     #- name: Publish on pypi.org
