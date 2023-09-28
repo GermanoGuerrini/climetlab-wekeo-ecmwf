@@ -129,4 +129,4 @@ jobs:
     - name: Deploy to ReadTheDocs
       run: |
         curl -X POST "https://readthedocs.org/api/v3/projects/climetlab_wekeo_ecmwf/builds/" \
-        -H "Authorization: Token ${{ secrets.RTD_TOKEN }}
+        -H "Authorization: Token ${{ secrets.RTD_TOKEN }}"
